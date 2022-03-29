@@ -2,99 +2,85 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/playMenuUI"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mockup_p9___eng_1"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/playButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/playButton"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/multiplayerButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/hearts"
+        android:layout_width="47dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/livesRemaining"
+        app:layout_constraintEnd_toStartOf="@+id/multiply"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/heart" />
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/playMultiplayerButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/exitButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/exitButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/exitButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/multiplayerButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/playMultiplayerButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scoreButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/scoreButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/scoreButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/settingsButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/multiply"
+        android:layout_width="31dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/livesRemaining"
+        app:layout_constraintEnd_toEndOf="@+id/livesRemaining"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/multiply" />
 
     <TextView
-        android:id="@+id/mainMenyTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:fontFamily="@font/regular"
-        android:shadowColor="#000000"
-        android:text="@string/appName"
-        android:textColor="#b55e1c"
-        android:textSize="70sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/playButton"
+        android:id="@+id/livesRemaining"
+        android:layout_width="36dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:layout_weight="1"
+        android:text="@string/livesRemaining"
+        android:textColor="@color/redPuzzling"
+        android:textSize="48sp"
+        app:fontFamily="@font/regular"
+        app:layout_constraintEnd_toStartOf="@+id/timeRemaining"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/timeRemaining"
+        android:layout_width="53dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/timeDown"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/timer" />
+
+    <TextView
+        android:id="@+id/timeDown"
+        android:layout_width="84dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_weight="1"
+        android:text="@string/timeRemaining"
+        android:textColor="@color/redPuzzling"
+        android:textSize="48sp"
+        app:fontFamily="@font/regular"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/puzzleContainer"
+        android:layout_width="362dp"
+        android:layout_height="342dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="296dp"
+        android:background="@drawable/puzzle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

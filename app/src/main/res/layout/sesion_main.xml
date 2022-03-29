@@ -2,14 +2,14 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/background"
+    android:id="@+id/backgroundForPlayPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mockup_p9___eng_1"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/background"
+        android:id="@+id/backgroundForPlayPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/mockup_p9___eng_1"
@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="0.926" />
 
     <TextView
-        android:id="@+id/mainMenyTitle"
+        android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
@@ -99,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/background" />
+        app:layout_constraintTop_toTopOf="@+id/backgroundForPlayPage" />
 
 
 </android.support.constraint.ConstraintLayout>
