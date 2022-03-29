@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">My First App</string>
+    <string name="appName">PUZZLING</string>
+    <string name="playButton">PLAY</string>
+    <string name="playMultiplayerButton">PLAY WITH FRIENDS</string>
+    <string name="scoreButton">SCORE</string>
+    <string name="settingsButton">SETTINGS</string>
+    <string name="exitButton">EXIT</string>
+    <string name="musicButton">MUSIC</string>
+    <string name="effectsButton">EFFECTS</string>
+    <string name="backButton">BACK</string>
+    <string name="mainMenu">MAIN MENU</string>
+    <string name="pausePage">PAUSE</string>
+    <string name="settingsPage">SETTINGS</string>
 </resources>
