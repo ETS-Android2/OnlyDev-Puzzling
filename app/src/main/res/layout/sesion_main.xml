@@ -30,6 +30,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/ini_sesion2"
+        android:layout_width="234dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/button_style"
+        android:text="SING UP"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/ini_sesion"
         android:layout_width="234dp"
         android:layout_height="77dp"
