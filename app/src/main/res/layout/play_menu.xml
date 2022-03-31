@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mockup_p9___eng_1"
-    tools:context=".MainActivity">
+    tools:context=".PlayPuzzle">
 
     <ImageView
         android:id="@+id/hearts"
@@ -34,15 +34,17 @@
     <TextView
         android:id="@+id/livesRemaining"
         android:layout_width="36dp"
-        android:layout_height="49dp"
+        android:layout_height="0dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="96dp"
         android:layout_marginRight="96dp"
+        android:layout_marginBottom="510dp"
         android:layout_weight="1"
         android:text="@string/livesRemaining"
         android:textColor="@color/redPuzzling"
         android:textSize="48sp"
         app:fontFamily="@font/regular"
+        app:layout_constraintBottom_toTopOf="@+id/puzzleScroll"
         app:layout_constraintEnd_toStartOf="@+id/timeRemaining"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,17 +72,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/puzzleContainer"
-        android:layout_width="362dp"
-        android:layout_height="342dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="296dp"
-        android:background="@drawable/puzzle"
+    <ImageView
+        android:id="@+id/puzzle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="147dp"
+        android:contentDescription="@android:string/untitled"
+        app:layout_constraintBottom_toBottomOf="@+id/puzzleScroll"
+        app:layout_constraintStart_toStartOf="@+id/puzzleScroll"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/puzzle"
+        tools:ignore="ImageContrastCheck" />
+
+    <HorizontalScrollView
+        android:id="@+id/puzzleScroll"
+        android:layout_width="393dp"
+        android:layout_height="103dp"
+        android:layout_marginBottom="92dp"
+        android:background="#B04E9710"
+        android:contentDescription="@android:string/no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+    </HorizontalScrollView>
 
 </android.support.constraint.ConstraintLayout>
