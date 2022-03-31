@@ -16,24 +16,24 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="265dp"
-        android:layout_height="71dp"
+        android:layout_width="267dp"
+        android:layout_height="65dp"
         android:background="@drawable/button_style"
-        android:text="CONTINUE"
+        android:text="RETRY"
         android:textSize="50sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="417dp" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="128dp"
-        android:layout_height="61dp"
+        android:layout_width="136dp"
+        android:layout_height="69dp"
         android:background="@drawable/button_style"
         android:text="EXIT"
         android:textSize="50sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="518dp" />
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="516dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -19,7 +19,7 @@
         android:layout_width="265dp"
         android:layout_height="71dp"
         android:background="@drawable/button_style"
-        android:text="CONTINUE"
+        android:text="SCORE"
         android:textSize="50sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="79dp"
