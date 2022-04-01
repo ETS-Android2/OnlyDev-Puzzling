@@ -14,19 +14,28 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
+    <ImageView
+        android:id="@+id/finish.finish"
+        android:layout_width="414dp"
+        android:layout_height="381dp"
+        android:layout_marginBottom="348dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/mockup_p9___eng_great2_0"
+        tools:layout_editor_absoluteX="-2dp" />
+
     <Button
-        android:id="@+id/great.continue"
+        android:id="@+id/finish.score"
         android:layout_width="265dp"
         android:layout_height="71dp"
         android:background="@drawable/button_style"
-        android:text="CONTINUE"
+        android:text="SCORE"
         android:textSize="50sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="79dp"
         tools:layout_editor_absoluteY="417dp" />
 
     <Button
-        android:id="@+id/great.exit"
+        android:id="@+id/finish.exit"
         android:layout_width="128dp"
         android:layout_height="61dp"
         android:background="@drawable/button_style"
@@ -35,12 +44,5 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="154dp"
         tools:layout_editor_absoluteY="518dp" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="413dp"
-        android:layout_height="405dp"
-        app:srcCompat="@drawable/mockup_p9___eng_great"
-        tools:layout_editor_absoluteX="-2dp" />
 
 </android.support.constraint.ConstraintLayout>

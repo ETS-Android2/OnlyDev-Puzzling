@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/finish.xml" value="0.21" />
         <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/great.xml" value="0.25" />
         <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/main_menu.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/nolife.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/nolive.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/notime.xml" value="0.21" />
         <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/score_menu.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/sesion_main.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/settings_menu.xml" value="0.17074275362318841" />
