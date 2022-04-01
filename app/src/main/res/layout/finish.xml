@@ -22,7 +22,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/mockup_p9___eng_great2_0" />
+        app:srcCompat="@drawable/great_aler_finish" />
 
     <Button
         android:id="@+id/finish.score"

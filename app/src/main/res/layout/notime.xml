@@ -44,7 +44,7 @@
         android:layout_height="394dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/mockup_p9___no_time"
+        app:srcCompat="@drawable/no_time_alert"
         tools:layout_editor_absoluteY="-2dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -43,7 +43,7 @@
         android:layout_width="422dp"
         android:layout_height="410dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/mockup_p9___no_lives"
+        app:srcCompat="@drawable/no_lives_alert"
         tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>
