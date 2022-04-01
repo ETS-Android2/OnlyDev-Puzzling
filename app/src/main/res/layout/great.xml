@@ -22,7 +22,8 @@
         android:text="CONTINUE"
         android:textSize="50sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="79dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="417dp" />
 
     <Button
@@ -33,14 +34,16 @@
         android:text="EXIT"
         android:textSize="50sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="154dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="518dp" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="413dp"
         android:layout_height="405dp"
-        app:srcCompat="@drawable/mockup_p9___eng_great"
-        tools:layout_editor_absoluteX="-2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/great_alert" />
 
 </android.support.constraint.ConstraintLayout>

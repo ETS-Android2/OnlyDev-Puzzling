@@ -20,8 +20,9 @@
         android:layout_height="381dp"
         android:layout_marginBottom="348dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/mockup_p9___eng_great2_0"
-        tools:layout_editor_absoluteX="-2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/mockup_p9___eng_great2_0" />
 
     <Button
         android:id="@+id/finish.score"
@@ -31,8 +32,9 @@
         android:text="SCORE"
         android:textSize="50sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="417dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="424dp" />
 
     <Button
         android:id="@+id/finish.exit"
@@ -42,7 +44,8 @@
         android:text="EXIT"
         android:textSize="50sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="518dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="520dp" />
 
 </android.support.constraint.ConstraintLayout>
