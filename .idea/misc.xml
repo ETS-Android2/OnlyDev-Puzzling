@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/OnlyDev-Puzzling/app/src/main/res/layout-v16/help_menu.xml" value="0.33" />
         <entry key="..\:/GitHub/OnlyDev-Puzzling/app/src/main/res/layout-v16/main_menu.xml" value="0.358695652173913" />
+        <entry key="..\:/GitHub/OnlyDev-Puzzling/app/src/main/res/layout-v16/register_menu.xml" value="0.358695652173913" />
         <entry key="..\:/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/great.xml" value="0.358695652173913" />
         <entry key="..\:/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/main_menu.xml" value="0.358695652173913" />
         <entry key="..\:/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/play_menu.xml" value="0.358695652173913" />
