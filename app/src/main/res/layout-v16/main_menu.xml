@@ -4,53 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mockup_p9___eng_1"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/adigiana"
+        android:shadowColor="#000000"
+        android:text="@string/appName"
+        android:textColor="#b55e1c"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="253dp"
+        android:layout_height="291dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pajaro_mockup"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-46dp" />
 
     <Button
         android:id="@+id/playButton"
         android:layout_width="234dp"
         android:layout_height="77dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/button_style"
         android:fontFamily="@font/regular"
         android:text="@string/playButton"
+        android:textColor="#c41212"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/multiplayerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/settingsButton"
         android:layout_width="234dp"
         android:layout_height="77dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="56dp"
         android:background="@drawable/button_style"
         android:fontFamily="@font/regular"
         android:text="@string/settingsButton"
+        android:textColor="#c41212"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/exitButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/exitButton"
         android:layout_width="234dp"
         android:layout_height="77dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/button_style"
         android:fontFamily="@font/regular"
         android:text="@string/exitButton"
+        android:textColor="#c41212"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/multiplayerButton"
@@ -60,42 +91,30 @@
         android:background="@drawable/button_style"
         android:fontFamily="@font/regular"
         android:text="@string/playMultiplayerButton"
+        android:textColor="#c41212"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/scoreButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/scoreButton"
         android:layout_width="234dp"
         android:layout_height="77dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/button_style"
         android:fontFamily="@font/regular"
         android:text="@string/scoreButton"
+        android:textColor="#c41212"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/settingsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:fontFamily="@font/adigiana"
-        android:shadowColor="#000000"
-        android:text="@string/appName"
-        android:textColor="#b55e1c"
-        android:textSize="70sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/playButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

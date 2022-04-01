@@ -9,7 +9,7 @@
         android:id="@+id/backgrod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/mockup_p9___eng_1"
+        android:background="@drawable/background"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
@@ -42,6 +42,6 @@
         android:layout_height="388dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="29dp"
-        tools:srcCompat="@drawable/mockup_p9___eng_great" />
+        tools:srcCompat="@drawable/great_alert" />
 
 </android.support.constraint.ConstraintLayout>
