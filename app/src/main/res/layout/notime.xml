@@ -36,4 +36,12 @@
         tools:layout_editor_absoluteX="137dp"
         tools:layout_editor_absoluteY="516dp" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="416dp"
+        android:layout_height="394dp"
+        app:srcCompat="@drawable/mockup_p9___no_time"
+        tools:layout_editor_absoluteX="-7dp"
+        tools:layout_editor_absoluteY="-2dp" />
+
 </android.support.constraint.ConstraintLayout>
