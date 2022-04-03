@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toTopOf="@+id/musicSlider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/settingsButton"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/musicSlider2" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

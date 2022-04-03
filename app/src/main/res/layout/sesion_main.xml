@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/background"
+        android:id="@+id/background2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/background"
@@ -40,6 +40,7 @@
         android:layout_height="49dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_style"
+        android:onClick="helpPage"
         android:text="?"
         android:textColor="#c41212"
         android:textSize="30sp"
@@ -102,8 +103,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.487" />
 
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
