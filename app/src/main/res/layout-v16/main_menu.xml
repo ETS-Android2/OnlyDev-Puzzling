@@ -63,7 +63,7 @@
         android:layout_marginBottom="28dp"
         android:background="@drawable/button_style"
         android:fontFamily="@font/regular"
-        android:onClick="playMenu"
+        android:onClick="clickExit"
         android:text="@string/exitButton"
         android:textColor="#c41212"
         android:textSize="40sp"
@@ -71,7 +71,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        />
 
     <Button
         android:id="@+id/multiplayerButton"

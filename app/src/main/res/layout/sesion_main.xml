@@ -36,13 +36,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/ini_sesion"
+        android:id="@+id/help"
         android:layout_width="49dp"
         android:layout_height="49dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_style"
         android:onClick="helpPage"
-        android:text="?"
+        android:text="`?`"
         android:textColor="#c41212"
         android:textSize="30sp"
         android:textStyle="bold"
