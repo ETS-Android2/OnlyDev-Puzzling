@@ -25,6 +25,7 @@
         android:layout_height="77dp"
         android:layout_marginBottom="248dp"
         android:background="@drawable/button_style"
+        android:onClick="playMenu"
         android:text="SING IN"
         android:textColor="#c41212"
         android:textSize="50sp"
