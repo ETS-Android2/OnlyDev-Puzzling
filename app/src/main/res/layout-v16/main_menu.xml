@@ -51,28 +51,26 @@
         android:textColor="#c41212"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/exitButton"
+        app:layout_constraintBottom_toTopOf="@+id/closeSesiontButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/exitButton"
-        android:layout_width="200dp"
-        android:layout_height="77dp"
+        android:id="@+id/closeSesiontButton"
+        android:layout_width="201dp"
+        android:layout_height="71dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/button_style"
         android:fontFamily="@font/regular"
-        android:onClick="clickExit"
-        android:text="@string/exitButton"
-        android:textColor="#c41212"
+        android:text="LOG OUT"
+        android:textColor="#FF3D00"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/multiplayerButton"

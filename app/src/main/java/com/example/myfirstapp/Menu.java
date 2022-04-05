@@ -15,7 +15,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
 
         Button playBtn=findViewById(R.id.playButton);
         Button settingsBtn=findViewById(R.id.settingsButton);
-        Button exitBtn=findViewById(R.id.exitButton);
+        Button exitBtn=findViewById(R.id.closeSesiontButton);
 
         playBtn.setOnClickListener((View.OnClickListener) this);
         settingsBtn.setOnClickListener((View.OnClickListener) this);
@@ -38,7 +38,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                 startActivity(intent);
                 break;
 
-            case R.id.exitButton: //sale de la aplicacion
+            case R.id.closeSesiontButton: //sale de la aplicacion
                 finish();
                 break;
         }

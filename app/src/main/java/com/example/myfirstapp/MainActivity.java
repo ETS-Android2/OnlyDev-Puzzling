@@ -18,9 +18,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button iniSesionBtn=findViewById(R.id.ini_sesion);
         Button helpBtn=findViewById(R.id.help);
+        Button ceateAccBtn=findViewById(R.id.exitApp);
 
         iniSesionBtn.setOnClickListener((View.OnClickListener) this);
         helpBtn.setOnClickListener((View.OnClickListener) this);
+        ceateAccBtn.setOnClickListener((View.OnClickListener) this);
     }
 
     @Override
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
 
-                case R.id.exitButton: //sale de la aplicacion
+                case R.id.exitApp: //sale de la aplicacion
                 finish();
                 break;
     }
