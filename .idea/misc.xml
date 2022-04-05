@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/drawable-v24/button_style_disabled.xml" value="0.1945" />
+        <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/drawable/button_style.xml" value="0.1945" />
+        <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/drawable/custom_button.xml" value="0.1945" />
         <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout-v16/help_menu.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout-v16/main_menu.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/dafep/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout-v16/register_menu.xml" value="0.1" />
