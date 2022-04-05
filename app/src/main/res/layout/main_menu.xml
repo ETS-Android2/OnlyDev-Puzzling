@@ -25,7 +25,7 @@
         tools:targetApi="jelly_bean" />
 
     <Button
-        android:id="@+id/musicButton"
+        android:id="@+id/playButton"
         android:layout_width="234dp"
         android:layout_height="77dp"
         android:layout_marginBottom="16dp"
@@ -73,7 +73,7 @@
         tools:targetApi="jelly_bean" />
 
     <Button
-        android:id="@+id/mainMenuButton"
+        android:id="@+id/settingsButton"
         android:layout_width="234dp"
         android:layout_height="77dp"
         android:layout_marginBottom="20dp"

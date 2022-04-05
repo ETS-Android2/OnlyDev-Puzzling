@@ -33,11 +33,11 @@
 
     <TextView
         android:id="@+id/livesRemaining"
-        android:layout_width="36dp"
-        android:layout_height="0dp"
+        android:layout_width="39dp"
+        android:layout_height="57dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
         android:layout_marginBottom="510dp"
         android:layout_weight="1"
         android:text="@string/livesRemaining"
@@ -46,7 +46,8 @@
         app:fontFamily="@font/regular"
         app:layout_constraintBottom_toTopOf="@+id/puzzleScroll"
         app:layout_constraintEnd_toStartOf="@+id/timeRemaining"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/timeRemaining"
@@ -89,7 +90,9 @@
         android:id="@+id/puzzleScroll"
         android:layout_width="393dp"
         android:layout_height="103dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="80dp"
         android:background="#B04E9710"
         android:contentDescription="@android:string/no"
         app:layout_constraintBottom_toBottomOf="parent"

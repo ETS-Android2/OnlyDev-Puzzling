@@ -15,11 +15,11 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <Button
-        android:id="@+id/great.continue"
-        android:layout_width="265dp"
-        android:layout_height="71dp"
+        android:id="@+id/nolive.retry"
+        android:layout_width="267dp"
+        android:layout_height="65dp"
         android:background="@drawable/button_style"
-        android:text="CONTINUE"
+        android:text="RETRY"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,23 +27,23 @@
         tools:layout_editor_absoluteY="417dp" />
 
     <Button
-        android:id="@+id/great.exit"
-        android:layout_width="128dp"
-        android:layout_height="61dp"
+        android:id="@+id/nolive.exit"
+        android:layout_width="136dp"
+        android:layout_height="69dp"
         android:background="@drawable/button_style"
         android:text="EXIT"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="518dp" />
+        tools:layout_editor_absoluteY="516dp" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="413dp"
-        android:layout_height="405dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/imageView"
+        android:layout_width="422dp"
+        android:layout_height="410dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/great_alert" />
+        app:srcCompat="@drawable/mockup_p9___no_lives"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>
