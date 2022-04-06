@@ -2,99 +2,107 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/playMenuUI"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/background"
+    tools:context=".PlayPuzzle">
 
-    <Button
-        android:id="@+id/playButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/playButton"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/multiplayerButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/hearts"
+        android:layout_width="47dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/livesRemaining"
+        app:layout_constraintEnd_toStartOf="@+id/multiply"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/heart" />
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/playMultiplayerButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/exitButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/exitButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/exitButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/multiplayerButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/playMultiplayerButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scoreButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/scoreButton"
-        android:layout_width="234dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
-        android:text="@string/scoreButton"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/settingsButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/multiply"
+        android:layout_width="31dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/livesRemaining"
+        app:layout_constraintEnd_toEndOf="@+id/livesRemaining"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/multiply" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/livesRemaining"
+        android:layout_width="39dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
+        android:layout_marginBottom="510dp"
+        android:layout_weight="1"
+        android:text="@string/livesRemaining"
+        android:textColor="@color/redPuzzling"
+        android:textSize="48sp"
+        app:fontFamily="@font/regular"
+        app:layout_constraintBottom_toTopOf="@+id/puzzleScroll"
+        app:layout_constraintEnd_toStartOf="@+id/timeRemaining"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/timeRemaining"
+        android:layout_width="53dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/timeDown"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/timer" />
+
+    <TextView
+        android:id="@+id/timeDown"
+        android:layout_width="84dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_weight="1"
+        android:text="@string/timeRemaining"
+        android:textColor="@color/redPuzzling"
+        android:textSize="48sp"
+        app:fontFamily="@font/regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/puzzle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:fontFamily="@font/regular"
-        android:shadowColor="#000000"
-        android:text="@string/appName"
-        android:textColor="#b55e1c"
-        android:textSize="70sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/playButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="147dp"
+        android:contentDescription="@android:string/untitled"
+        app:layout_constraintBottom_toBottomOf="@+id/puzzleScroll"
+        app:layout_constraintStart_toStartOf="@+id/puzzleScroll"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.615"
+        app:srcCompat="@drawable/puzzle"
+        tools:ignore="ImageContrastCheck" />
+
+    <HorizontalScrollView
+        android:id="@+id/puzzleScroll"
+        android:layout_width="393dp"
+        android:layout_height="103dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="76dp"
+        android:background="#B04E9710"
+        android:contentDescription="@android:string/no"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+    </HorizontalScrollView>
 
 </android.support.constraint.ConstraintLayout>
