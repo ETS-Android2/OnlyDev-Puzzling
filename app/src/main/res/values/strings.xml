@@ -5,10 +5,22 @@
     <string name="scoreButton">SCORE</string>
     <string name="settingsButton">SETTINGS</string>
     <string name="exitButton">EXIT</string>
+
+    <string name="settingsPage">SETTINGS</string>
+    <string name="pausePage">PAUSE</string>
+    <!-- same buttons for both pages -->
     <string name="musicButton">MUSIC</string>
     <string name="effectsButton">EFFECTS</string>
     <string name="backButton">BACK</string>
     <string name="mainMenu">MAIN MENU</string>
-    <string name="pausePage">PAUSE</string>
-    <string name="settingsPage">SETTINGS</string>
+
+
+    <string name="continueButton">CONTINUE</string>
+    <string name="retryButton">RETRY</string>
+    <string name="logOutButton">LOG OUT</string>
+
+    <!-- TODO: check if values from this xml can be modified by code -->
+    <string name="livesRemaining">3</string>
+    <string name="timeRemaining">120</string>
+
 </resources>
