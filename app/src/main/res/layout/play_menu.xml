@@ -5,7 +5,7 @@
     android:id="@+id/playMenuUI"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mockup_p9___eng_1"
+    android:background="@drawable/background"
     tools:context=".PlayPuzzle">
 
     <ImageView
