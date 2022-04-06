@@ -83,6 +83,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/puzzleScroll"
         app:layout_constraintStart_toStartOf="@+id/puzzleScroll"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.615"
         app:srcCompat="@drawable/puzzle"
         tools:ignore="ImageContrastCheck" />
 
@@ -90,9 +91,9 @@
         android:id="@+id/puzzleScroll"
         android:layout_width="393dp"
         android:layout_height="103dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="76dp"
         android:background="#B04E9710"
         android:contentDescription="@android:string/no"
         app:layout_constraintBottom_toBottomOf="parent"

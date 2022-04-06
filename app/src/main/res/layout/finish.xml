@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/background"
-        tools:ignore="MissingConstraints"
+        android:contentDescription="@android:string/no"
+        tools:ignore="MissingConstraints,ImageContrastCheck"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
@@ -19,6 +20,7 @@
         android:layout_width="414dp"
         android:layout_height="381dp"
         android:layout_marginBottom="348dp"
+        android:contentDescription="@android:string/no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,24 +30,32 @@
         android:id="@+id/finish.score"
         android:layout_width="265dp"
         android:layout_height="71dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/button_style"
-        android:text="SCORE"
+        android:fontFamily="@font/regular"
+        android:text="@string/scoreButton"
+        android:textColor="@color/redPuzzling"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/finish.exit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="424dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/finish.exit"
         android:layout_width="128dp"
         android:layout_height="61dp"
+        android:layout_marginBottom="120dp"
         android:background="@drawable/button_style"
-        android:text="EXIT"
-        android:textSize="50sp"
+        android:fontFamily="@font/regular"
+        android:text="@string/exitButton"
+        android:textColor="@color/redPuzzling"
+        android:textSize="40sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/backgrod"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="520dp" />
+        tools:ignore="TextContrastCheck" />
 
 </android.support.constraint.ConstraintLayout>

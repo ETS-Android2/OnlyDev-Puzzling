@@ -18,9 +18,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button iniSesionBtn=findViewById(R.id.ini_sesion);
         Button helpBtn=findViewById(R.id.help);
+        Button ceateAccBtn=findViewById(R.id.exitApp);
 
         iniSesionBtn.setOnClickListener((View.OnClickListener) this);
         helpBtn.setOnClickListener((View.OnClickListener) this);
+        ceateAccBtn.setOnClickListener((View.OnClickListener) this);
     }
 
     @Override
@@ -39,26 +41,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
 
-            case R.id.exitButton: //sale de la aplicacion
+            case R.id.exitApp: //sale de la aplicacion
                 finish();
                 break;
         }
-
-
-    /*public void playMenu(View view){
-        Intent i = new Intent(this, Menu.class);
-        startActivity(i);
-    }
-
-    public void helpPage(View view){
-        Intent i = new Intent(this,Help.class);
-        startActivity(i);
-    }
-
-    public void clickExit(View view){
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
-    }*/
     }
 }
+//    public void playMenu(View view){
+//        Intent i = new Intent(this, Menu.class);
+//        startActivity(i);
+//    }
+//
+//    public void helpPage(View view){
+//        Intent i = new Intent(this,Help.class);
+//        startActivity(i);
+//    }
+//
+//    public void clickExit(View view){
+//        moveTaskToBack(true);
+//        android.os.Process.killProcess(android.os.Process.myPid());
+//        System.exit(0);
