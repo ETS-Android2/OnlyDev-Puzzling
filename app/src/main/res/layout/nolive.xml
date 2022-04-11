@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageView
-        android:id="@+id/backgrod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+    android:background="@drawable/background">
 
     <Button
         android:id="@+id/nolive.retry"
         android:layout_width="267dp"
         android:layout_height="65dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/button_style"
-        android:text="RETRY"
+        android:text="@string/retryButton"
+        android:textColor="@color/redPuzzling"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:fontFamily="@font/regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="417dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/nolive.exit"
         android:layout_width="136dp"
         android:layout_height="69dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/button_style"
-        android:text="EXIT"
+        android:text="@string/exitButton"
+        android:textColor="@color/redPuzzling"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:fontFamily="@font/regular"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="516dp" />
+        app:layout_constraintTop_toBottomOf="@+id/nolive.retry"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="422dp"
-        android:layout_height="410dp"
+        android:layout_width="389dp"
+        android:layout_height="380dp"
+        android:contentDescription="@android:string/no"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/no_lives_alert"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/no_lives_alert" />
 
 </android.support.constraint.ConstraintLayout>

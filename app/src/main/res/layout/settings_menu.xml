@@ -13,14 +13,16 @@
         android:layout_height="0dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
+        android:fontFamily="@font/regular"
         android:text="@string/musicButton"
-        android:textSize="50sp"
+        android:textColor="@color/redPuzzling"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/musicSlider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:targetApi="jelly_bean" />
 
     <Button
         android:id="@+id/settingsButton"
@@ -28,14 +30,17 @@
         android:layout_height="0dp"
         android:layout_marginBottom="120dp"
         android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
+        android:fontFamily="@font/regular"
         android:text="@string/mainMenu"
+        android:textColor="@color/redPuzzling"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scoreButton" />
+        app:layout_constraintTop_toBottomOf="@+id/scoreButton"
+        tools:ignore="TextContrastCheck"
+        tools:targetApi="jelly_bean" />
 
     <Button
         android:id="@+id/multiplayerButton"
@@ -43,14 +48,16 @@
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
+        android:fontFamily="@font/regular"
         android:text="@string/effectsButton"
+        android:textColor="@color/redPuzzling"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/musicSlider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musicSlider" />
+        app:layout_constraintTop_toBottomOf="@+id/musicSlider"
+        tools:targetApi="jelly_bean" />
 
     <Button
         android:id="@+id/scoreButton"
@@ -58,24 +65,28 @@
         android:layout_height="0dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/button_style"
-        android:fontFamily="@font/adigiana"
+        android:fontFamily="@font/regular"
+        android:shadowColor="@color/redPuzzling"
         android:text="@string/backButton"
+        android:textColor="@color/redPuzzling"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/settingsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musicSlider2" />
+        app:layout_constraintTop_toBottomOf="@+id/musicSlider2"
+        tools:ignore="TextContrastCheck"
+        tools:targetApi="jelly_bean" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="61dp"
         android:layout_marginBottom="42dp"
-        android:fontFamily="@font/regular"
+        android:fontFamily="@font/adigiana"
         android:shadowColor="#000000"
         android:text="@string/settingsButton"
         android:textColor="#b55e1c"
@@ -83,7 +94,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/playButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="jelly_bean" />
 
     <SeekBar
         android:id="@+id/musicSlider"
