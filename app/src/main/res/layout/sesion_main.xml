@@ -14,8 +14,7 @@
         android:layout_height="77dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/button_style"
-        android:onClick="playMenu"
-        android:text="SING IN"
+        android:text="@string/signInButton"
         android:textColor="#c41212"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -30,15 +29,15 @@
         android:layout_height="77dp"
         android:layout_marginBottom="84dp"
         android:background="@drawable/button_style"
-        android:onClick="playMenu"
-        android:text="EXIT"
+        android:text="@string/exitButton"
         android:textColor="#FF3D00"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/help"
@@ -48,13 +47,13 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_style"
-        android:onClick="helpPage"
-        android:text=" ? "
+        android:text="@string/helpButton"
         android:textColor="#c41212"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/newAccount"
@@ -62,7 +61,7 @@
         android:layout_height="77dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_style"
-        android:text="LOG IN"
+        android:text="@string/logInButton"
         android:textColor="#c41212"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -72,52 +71,61 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/email_sesion"
+        android:id="@+id/mail"
         android:layout_width="267dp"
         android:layout_height="80dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#c41212"
         android:ems="10"
-        android:fontFamily="@font/regular"
+        app:fontFamily="@font/regular"
         android:gravity="center_horizontal"
+        android:hint="@string/insertMailInput"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
-        android:text="INSERT E-MAIL"
         android:textAlignment="center"
         android:textColor="#c41212"
-        app:layout_constraintBottom_toTopOf="@+id/password_sesion"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck"
+        tools:targetApi="lollipop" />
 
     <EditText
-        android:id="@+id/password_sesion"
+        android:id="@+id/password"
         android:layout_width="267dp"
         android:layout_height="80dp"
         android:backgroundTint="#c41212"
         android:ems="10"
-        android:fontFamily="@font/regular"
         android:gravity="center_horizontal"
-        android:inputType="textEmailAddress"
-        android:text="INSERT PASSWORD"
+        android:hint="@string/insertPasswordInput"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
         android:textAlignment="center"
         android:textColor="#c41212"
+        android:textColorHint="@color/colorAccent"
+        app:fontFamily="@font/regular"
         app:layout_constraintBottom_toTopOf="@+id/newAccount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck"
+        tools:targetApi="lollipop" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/adigiana"
+        app:fontFamily="@font/adigiana"
         android:shadowColor="#000000"
-        android:text="PUZZLING"
+        android:text="@string/appName"
         android:textColor="#b55e1c"
         android:textSize="70sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/email_sesion"
+        app:layout_constraintBottom_toTopOf="@+id/mail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="jelly_bean" />
 
 
 </android.support.constraint.ConstraintLayout>
