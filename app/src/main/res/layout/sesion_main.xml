@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/ini_sesion"
+        android:id="@+id/signIn"
         android:layout_width="234dp"
         android:layout_height="77dp"
         android:layout_marginBottom="20dp"
@@ -19,13 +19,13 @@
         android:textSize="50sp"
         android:textStyle="bold"
         app:fontFamily="@font/regular"
-        app:layout_constraintBottom_toTopOf="@+id/exitApp"
+        app:layout_constraintBottom_toTopOf="@+id/exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/exitApp"
+        android:id="@+id/exit"
         android:layout_width="234dp"
         android:layout_height="77dp"
         android:layout_marginBottom="84dp"
@@ -59,7 +59,7 @@
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/newAccount"
+        android:id="@+id/logIn"
         android:layout_width="234dp"
         android:layout_height="77dp"
         android:layout_marginBottom="16dp"
@@ -69,7 +69,7 @@
         android:textColor="#c41212"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ini_sesion"
+        app:layout_constraintBottom_toTopOf="@+id/signIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
@@ -111,7 +111,7 @@
         android:textColor="#c41212"
         android:textColorHint="@color/colorAccent"
         app:fontFamily="@font/regular"
-        app:layout_constraintBottom_toTopOf="@+id/newAccount"
+        app:layout_constraintBottom_toTopOf="@+id/logIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
