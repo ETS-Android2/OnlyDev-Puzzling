@@ -41,7 +41,7 @@ public class ScoreLayout extends AppCompatActivity implements View.OnClickListen
     }
 
     public void showScores(){
-        ArrayAdapter<ArrayList> scores = new ArrayAdapter<>(ScoreLayout.this,
+        ArrayAdapter<ArrayList<String>> scores = new ArrayAdapter<>(ScoreLayout.this,
                 android.R.layout.simple_list_item_1, this.sqlManager.selectBestScores());
         this.scoreTable.setAdapter(scores);
     }

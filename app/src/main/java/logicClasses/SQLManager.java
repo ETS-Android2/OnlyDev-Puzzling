@@ -1,14 +1,10 @@
 package logicClasses;
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
-
-import com.example.myfirstapp.ScoreLayout;
-
 import java.util.ArrayList;
 
 public class SQLManager extends SQLiteOpenHelper {
@@ -24,7 +20,7 @@ public class SQLManager extends SQLiteOpenHelper {
             "score INTEGER, idUser INTEGER, FOREIGN KEY (idUser) REFERENCES User(idUser))";
     private static final String SELECT_ALL_SCORES = "SELECT mail, score FROM Score INNER JOIN User " +
             "ON User.idUser = Score.idUser ORDER BY score ASC";
-    private static final String SELECT_USER = "SELECT * FROM User WHERE idUser = ?";
+    private static final String SELECT_USER = "SELECT mail, password FROM User WHERE mail = ?";
 
     public SQLManager(@Nullable Context context, @Nullable String name,
                       @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -43,10 +39,10 @@ public class SQLManager extends SQLiteOpenHelper {
     }
 
     public long createOneUser(User user){
-        /**
-         * Adds one row in the table User
-         * @param: User object type
-         * @return: -1 in case the insert has not been successful. Helps in the error flow handler.
+        /*
+          Adds one row in the table User
+          @param: User object type
+          @return: -1 in case the insert has not been successful. Helps in the error flow handler.
          */
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -56,19 +52,20 @@ public class SQLManager extends SQLiteOpenHelper {
         return sqLiteDatabase.insert("USER", null, contentValues);
     }
 
-    public ArrayList<ArrayList> selectBestScores(){
-        /**
-         * Will retrieve the 10 best scores gotten in an ascending order
-         * @param: null
-         * @return: ArrayList of Score type objects
+    public ArrayList<ArrayList<String>> selectBestScores(){
+        /*
+          Will retrieve the 10 best scores gotten in an ascending order
+          @param: null
+          @return: ArrayList of Score type objects
          */
-        ArrayList<ArrayList> scores = new ArrayList<>();
+        ArrayList<ArrayList<String>> scores = new ArrayList<>();
         ArrayList<String> scoresRow = new ArrayList<>();
         int columnIndex;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        for (int rowPosition = 0; rowPosition < 10; rowPosition ++){
-            try {
-                Cursor cursor = sqLiteDatabase.rawQuery(SELECT_ALL_SCORES, null);
+        try {
+            Cursor cursor = sqLiteDatabase.rawQuery(SELECT_ALL_SCORES, null);
+            cursor.moveToFirst();
+            for (int rowPosition = 0; rowPosition < 10; rowPosition ++) {
                 columnIndex = cursor.getColumnIndex("mail");
                 scoresRow.add(cursor.getString(columnIndex));
                 columnIndex = cursor.getColumnIndex("score");
@@ -76,37 +73,35 @@ public class SQLManager extends SQLiteOpenHelper {
                 scores.add(scoresRow);
                 scoresRow.clear(); //Empty auxiliar variable
                 cursor.moveToNext(); //Getting next row from table
-                cursor.close();
-            } catch (Exception e) {
-                scoresRow.add("There is no scores to show. Try again later.");
-                scores.add(scoresRow);
             }
+            cursor.close();
+        } catch (Exception e) {
+            scoresRow.add("There is no scores to show. Try again later.");
+            scores.add(scoresRow);
         }
-        sqLiteDatabase.close();
         return scores;
     }
 
-    public ArrayList<String> retrieveUser(String mail){
-        /**
-         * Will select the row where the mail corresponds, returning the mail and password in
-         * an array
-         * @param: null
-         * @return: ArrayList with two items: mail and password (in case the mail does not
-         * appear in database, will return empty ArrayList)
+    public User retrieveUser(String mail){
+        /*
+          Will select the row where the mail corresponds, returning the mail and password in
+          an array
+          @param: null
+          @return: user object. Attributes empty if user does not exist.
          */
-        //TODO: check this function. Not correctly implemented
-        ArrayList<String> user = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        User user = new User();
         int columnIndex;
         try{
             Cursor cursor = sqLiteDatabase.rawQuery(SELECT_USER, new String[] {mail});
+            cursor.moveToFirst();
             columnIndex = cursor.getColumnIndex("mail");
-            user.add(cursor.getString(columnIndex));
+            user.setMail(cursor.getString(columnIndex));
             columnIndex = cursor.getColumnIndex("password");
-            user.add(cursor.getString(columnIndex));
+            user.setPassword(cursor.getString(columnIndex));
             cursor.close();
         } catch (Exception e){
-            return null;
+            //Do nothing
         }
         return user;
     }

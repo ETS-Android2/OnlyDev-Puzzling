@@ -1,5 +1,7 @@
 package logicClasses;
 
+import java.util.Objects;
+
 public class User {
 
     // -------- ATTRIBUTES ------- //
@@ -11,6 +13,12 @@ public class User {
     public User(String mail, String password) {
         this.mail = mail;
         this.password = password;
+    }
+
+    // Empty constructor if needed
+    public User(){
+        this.mail = "";
+        this.password = "";
     }
 
     // ------ GETTERS & SETTERS ----- //
@@ -42,6 +50,20 @@ public class User {
                 ", password='" + password + '\'' +
                 ", idUser=" + idUser +
                 '}';
+    }
+
+    public boolean isEmpty(){
+        if (this.mail.isEmpty() & this.password.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean equals(User userToCompare) {
+        if (userToCompare.getMail().equals(this.mail) & userToCompare.getPassword().equals(this.password)){
+            return true;
+        }
+        return false;
     }
 }
 
