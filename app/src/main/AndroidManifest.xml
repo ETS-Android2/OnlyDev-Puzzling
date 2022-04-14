@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".Help"></activity>
+        <activity android:name=".SeleccionarPuzzle"></activity>
+        <activity android:name=".CreaPuzzle"></activity>
         <activity android:name=".Menu"></activity>
         <activity android:name=".MainActivity"
             android:exported="true">

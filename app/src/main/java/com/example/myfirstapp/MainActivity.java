@@ -1,7 +1,7 @@
 package com.example.myfirstapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;//modifLeon
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,9 +21,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // ----- ATTRIBUTES ------------ //
     SQLManager sqlManager = new SQLManager(MainActivity.this, "PuzzlingDatabase",
             null, 1);
-
-    // ---- POSSIBLE INTENTS ------- //
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,11 +101,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         this.exit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //Close connection to database
+//                MainActivity.this.sqlManager.close();
+//                finish();
+//            }
             @Override
             public void onClick(View view) {
-                //Close connection to database
-                MainActivity.this.sqlManager.close();
-                finish();
+                Intent intent = new Intent(MainActivity.this, SeleccionarPuzzle.class);
+                startActivity(intent);
+
+                //Toast.makeText(MainActivity.this, "You've pressed the exit button",Toast.LENGTH_SHORT).show();
             }
         });
     }
