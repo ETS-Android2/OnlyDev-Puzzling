@@ -29,10 +29,15 @@
         <entry key="..\:/Users/leoncantallano/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/sesion_main.xml" value="0.33" />
         <entry key="..\:/Users/leoncantallano/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/settings_menu.xml" value="0.18115942028985507" />
         <entry key="..\:/Users/leoncantallano/Documents/GitHub/OnlyDev-Puzzling/app/src/main/res/layout/tablerojuego_main.xml" value="0.2866847826086957" />
+        <entry key="..\:/git/OnlyDev-Puzzling/app/src/main/res/layout/main_menu.xml" value="0.1" />
+        <entry key="..\:/git/OnlyDev-Puzzling/app/src/main/res/layout/play_menu.xml" value="0.1" />
+        <entry key="..\:/git/OnlyDev-Puzzling/app/src/main/res/layout/register_menu.xml" value="0.1" />
+        <entry key="..\:/git/OnlyDev-Puzzling/app/src/main/res/layout/score_menu.xml" value="0.1" />
+        <entry key="..\:/git/OnlyDev-Puzzling/app/src/main/res/layout/sesion_main.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

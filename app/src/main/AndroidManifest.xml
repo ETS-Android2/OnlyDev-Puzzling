@@ -24,9 +24,8 @@
         </activity>
         <service
             android:name=".MusicManager"
-            android:exported="false"
-            android:enabled="true">
-        </service>
+            android:enabled="true"/>
+
     </application>
 
 </manifest>

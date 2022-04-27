@@ -8,13 +8,13 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 
 public class MusicManager extends Service {
-   MediaPlayer player = MediaPlayer.create(this,R.raw.bso);
+   MediaPlayer player;
 
    public MusicManager(){
 
 
    }
-    @Nullable
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -38,6 +38,7 @@ public class MusicManager extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        return START_STICKY;
+       player.start();
+       return super.onStartCommand(intent,flags,startId);
     }
 }

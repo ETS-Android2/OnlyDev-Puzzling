@@ -147,32 +147,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void play(View view) {
-        if (player == null){
-            player = MediaPlayer.create(this, R.raw.bso);
-            player.setLooping(true);
-            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    stopPlayer();
-                }
-            });
-        }
-        player.start();
+        Intent i= new Intent(this,MusicManager.class);
+        startService(i);
     }
 
-    public void iniciar() {
-        if (player == null){
-            player = MediaPlayer.create(this, R.raw.bso);
-            player.setLooping(true);
-            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    stopPlayer();
-                }
-            });
-        }
-        player.start();
-    }
+
 
     public void pause(View view) {
         if (player != null){
@@ -181,22 +160,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void stop(View view) {
-        stopPlayer();
+        Intent i= new Intent(this,MusicManager.class);
+        stopService(i);
     }
 
-    private void stopPlayer(){
-        if (player != null){
-            player.release();
-            player = null;
-            Toast.makeText(this, "Music muted.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    /*@Override CON ESTE METODO AL CAMBIAR DE ESCENA PAUSA LA MUSICA
-    protected void onStop(){
-        super.onStop();
-        stopPlayer();
-    }*/
 
     @Override
     public void onClick(View view) {
