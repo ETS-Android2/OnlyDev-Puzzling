@@ -21,17 +21,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText mail, password;
 
     // ----- AUDIO ------------ //
-    MediaPlayer player = null;
+    MediaPlayer player;
 
     // ----- ATTRIBUTES ------------ //
     SQLManager sqlManager = new SQLManager(MainActivity.this, "PuzzlingDatabase",
             null, 1);
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sesion_main);
-        iniciar();
+        //iniciar();
+        Intent i= new Intent(this,MusicManager.class);
+        startService(i);
 
         //Setting value for the member references from the first layout
         this.logIn = findViewById(R.id.logIn);
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.exit = findViewById(R.id.exit);
         this.mail = findViewById(R.id.mail);
         this.password = findViewById(R.id.password);
+
 
         //Button listeners
         this.signIn.setOnClickListener(new View.OnClickListener() {
@@ -140,17 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // ----- AUDIO METODS------------ //
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        player.pause();
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        player.start();
-    }
 
     public void play(View view) {
         if (player == null){
