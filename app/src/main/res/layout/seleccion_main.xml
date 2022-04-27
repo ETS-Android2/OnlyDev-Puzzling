@@ -25,16 +25,18 @@
 
     <GridView
         android:id="@+id/tableropuzzles"
-        android:layout_width="413dp"
-        android:layout_height="212dp"
+        android:layout_width="368dp"
+        android:layout_height="477dp"
+        android:layout_marginTop="16dp"
         android:horizontalSpacing="10dp"
         android:numColumns="2"
         android:paddingHorizontal="10dp"
         android:paddingVertical="10dp"
         android:verticalSpacing="20dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="172dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/help"
@@ -54,10 +56,27 @@
         tools:ignore="TextContrastCheck" />
 
     <Button
+        android:id="@+id/camera"
+        android:layout_width="74dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_style"
+        android:drawableBottom="@drawable/ic_camera"
+        android:textColor="#c41212"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="InvalidId,TextContrastCheck" />
+
+    <Button
         android:id="@+id/botonvolver"
         android:layout_width="234dp"
         android:layout_height="77dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/button_style"
         android:contentDescription="Este es el boton para volver al menu seleccion"
         android:onClick="onClick"

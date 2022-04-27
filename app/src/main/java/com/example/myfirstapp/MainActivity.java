@@ -2,6 +2,8 @@ package com.example.myfirstapp;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;//modifLeon
+
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button logIn, signIn, help, exit;
     private EditText mail, password;
 
+    // ----- AUDIO ------------ //
+    MediaPlayer player = null;
+
     // ----- ATTRIBUTES ------------ //
     SQLManager sqlManager = new SQLManager(MainActivity.this, "PuzzlingDatabase",
             null, 1);
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sesion_main);
+        iniciar();
 
         //Setting value for the member references from the first layout
         this.logIn = findViewById(R.id.logIn);
@@ -36,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.password = findViewById(R.id.password);
 
         //Button listeners
-        this.logIn.setOnClickListener(new View.OnClickListener() {
+        this.signIn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -69,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        this.signIn.setOnClickListener(new View.OnClickListener() {
+        this.logIn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -115,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Toast.makeText(MainActivity.this, "You've pressed the exit button",Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     public boolean areFieldsFulfill() {
@@ -130,6 +137,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return true;
     }
+
+    // ----- AUDIO METODS------------ //
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        player.pause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        player.start();
+    }
+
+    public void play(View view) {
+        if (player == null){
+            player = MediaPlayer.create(this, R.raw.bso);
+            player.setLooping(true);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    stopPlayer();
+                }
+            });
+        }
+        player.start();
+    }
+
+    public void iniciar() {
+        if (player == null){
+            player = MediaPlayer.create(this, R.raw.bso);
+            player.setLooping(true);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    stopPlayer();
+                }
+            });
+        }
+        player.start();
+    }
+
+    public void pause(View view) {
+        if (player != null){
+            player.pause();
+        }
+    }
+
+    public void stop(View view) {
+        stopPlayer();
+    }
+
+    private void stopPlayer(){
+        if (player != null){
+            player.release();
+            player = null;
+            Toast.makeText(this, "Music muted.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /*@Override CON ESTE METODO AL CAMBIAR DE ESCENA PAUSA LA MUSICA
+    protected void onStop(){
+        super.onStop();
+        stopPlayer();
+    }*/
 
     @Override
     public void onClick(View view) {

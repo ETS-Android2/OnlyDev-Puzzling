@@ -28,13 +28,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         switch (view.getId()){
 
             case R.id.playButton:
-                Intent intent = new Intent(this, Menu.class);
-                startActivity(intent);
-                break;
-
-
-            case R.id.settingsButton: //go to help View
-                intent = new Intent(this, Help.class);
+                Intent intent = new Intent(Menu.this, SeleccionarPuzzle.class);
                 startActivity(intent);
                 break;
 
@@ -43,4 +37,5 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                 break;
         }
     }
+
 }
