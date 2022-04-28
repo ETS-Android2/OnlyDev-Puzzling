@@ -64,6 +64,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_style"
         android:drawableBottom="@drawable/ic_camera"
+        android:onClick="Foto"
         android:textColor="#c41212"
         android:textSize="30sp"
         android:textStyle="bold"

@@ -9,6 +9,18 @@ import android.widget.Button;
 public class Menu extends AppCompatActivity implements View.OnClickListener{
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Intent i= new Intent(this,MusicManager.class);
+        startService(i);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        Intent i= new Intent(this,MusicManager.class);
+        stopService(i);
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
@@ -20,6 +32,9 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         playBtn.setOnClickListener((View.OnClickListener) this);
         settingsBtn.setOnClickListener((View.OnClickListener) this);
         exitBtn.setOnClickListener((View.OnClickListener) this);
+
+        Intent i= new Intent(this,MusicManager.class);
+        startService(i);
     }
 
     @Override

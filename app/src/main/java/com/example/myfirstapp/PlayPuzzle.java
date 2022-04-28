@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -12,7 +13,18 @@ import java.util.ArrayList;
 
 public class PlayPuzzle extends AppCompatActivity {
     ArrayList<Bitmap> pieces;
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        Intent i= new Intent(this,MusicManager.class);
+        startService(i);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        Intent i= new Intent(this,MusicManager.class);
+        stopService(i);
+    }
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +32,8 @@ public class PlayPuzzle extends AppCompatActivity {
 
         final ConstraintLayout layout = findViewById(R.id.playMenuUI);
         ImageView puzzle = findViewById(R.id.puzzle);
-
+        Intent i= new Intent(this,MusicManager.class);
+        startService(i);
         // run image related code after the view was laid out
         // to have all dimensions calculated
         puzzle.post(new Runnable(){
