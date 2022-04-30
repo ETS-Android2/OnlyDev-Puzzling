@@ -1,26 +1,36 @@
 package com.example.myfirstapp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.os.CountDownTimer;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class PlayPuzzle extends AppCompatActivity {
+    // --- ATTRIBUTES --------
     ArrayList<Bitmap> pieces;
+
+    // --- MEMBER REFERENCES -
+    TextView timeRemaining;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.play_menu); //Matching this class with the play_menu UI
+        setContentView(R.layout.play_menu);
 
+        //Setting value for the member references from the first layout
+        this.timeRemaining = findViewById(R.id.timeDown);
         final ConstraintLayout layout = findViewById(R.id.playMenuUI);
         ImageView puzzle = findViewById(R.id.puzzle);
-
+        PlayPuzzle.this.countDown(200L);
         // run image related code after the view was laid out
         // to have all dimensions calculated
         puzzle.post(new Runnable(){
@@ -60,5 +70,23 @@ public class PlayPuzzle extends AppCompatActivity {
             height += heightFromPieces;
         }
         return pieces;
+    }
+
+    public void countDown(Long initialTime){ //TODO: add parameter "String imageName" to change value depending on image name:
+        //Time is passed as seconds
+        initialTime = initialTime * 1000;
+        CountDownTimer countDownTimer = new CountDownTimer(initialTime, 1000) { //Decreasing by seconds
+            @Override
+            public void onTick(long timeRemaining) {
+                String countDownShown = String.valueOf(timeRemaining / 1000);
+                PlayPuzzle.this.timeRemaining.setText(countDownShown);
+            }
+
+            @Override
+            public void onFinish() {
+                Intent noTime = new Intent(getApplicationContext(), NoTime.class);
+                startActivity(noTime);
+            }
+        }.start();
     }
 }

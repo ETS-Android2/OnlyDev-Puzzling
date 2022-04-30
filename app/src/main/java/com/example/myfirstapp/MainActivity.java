@@ -1,7 +1,10 @@
 package com.example.myfirstapp;
 
+import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;//modifLeon
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // ----- ATTRIBUTES ------------ //
     SQLManager sqlManager = new SQLManager(MainActivity.this, "PuzzlingDatabase",
             null, 1);
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             long createStatement = MainActivity.this.sqlManager.createOneUser(user);
                             Toast.makeText(MainActivity.this, "User \"" + user.getMail() +
                                     "\" created successfully.", Toast.LENGTH_LONG).show();
+                            MainActivity.this.setUser(userRetrieved); //Setting user to later store score
+                            MainActivity.this.saveSharedPreferences(userRetrieved.getIdUser());
                             //Getting in Menu layout
                             Intent startLayout = new Intent(getApplicationContext(), Menu.class);
                             startActivity(startLayout);
@@ -80,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     User userRetrieved = MainActivity.this.sqlManager.
                             retrieveUser(mail);
                     if (userInserted.equals(userRetrieved)) {
+                        MainActivity.this.saveSharedPreferences(userRetrieved.getIdUser());
                         //Getting in Menu layout
                         Intent startLayout = new Intent(getApplicationContext(), Menu.class);
                         startActivity(startLayout);
@@ -134,6 +141,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void saveSharedPreferences(int valueToSave){
+        /*
+        Once the user is sign in or log in, this information will be stored in a shared preference
+        in order to use this information for the next layouts.
+        */
+        //Creating the shared preferences file
+        SharedPreferences sharedPreferences = getSharedPreferences("UserInformation", Context.MODE_PRIVATE);
+        SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
+        //Put information in the file
+        sharedPreferencesEditor.putInt("UserID", valueToSave);
+        sharedPreferencesEditor.commit();
     }
 }
 
