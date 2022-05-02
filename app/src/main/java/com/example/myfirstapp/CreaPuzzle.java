@@ -39,7 +39,7 @@ public class CreaPuzzle extends AppCompatActivity {
 
 
     // --- MEMBER REFERENCES -
-    TextView timeRemaining;
+    TextView timeDown;
 
 
     @Override
@@ -50,7 +50,7 @@ public class CreaPuzzle extends AppCompatActivity {
 
         final RelativeLayout layout = findViewById(R.id.tablero);
         final ImageView imageView = findViewById(R.id.imageView);
-        this.timeRemaining = findViewById(R.id.timeRemaining);
+        this.timeDown = findViewById(R.id.timeDown);
 
         Intent intent = getIntent();
         final String assetName = intent.getStringExtra("assetName"); //obtiene la imagen seleccionada por el jugador
@@ -75,9 +75,9 @@ public class CreaPuzzle extends AppCompatActivity {
                     lParams.topMargin = layout.getHeight() - piece.pieceHeight;
                     piece.setLayoutParams(lParams);
                 }
-                new CountDownTimer(200000, 1000){
+                new CountDownTimer(50000, 1000){
                     public void onTick(long initialTime) {
-                        timeRemaining.setText(String.valueOf(initialTime / 1000));
+                        timeDown.setText(String.valueOf(initialTime / 1000));
                     }
 
                     public void onFinish(){
@@ -287,13 +287,11 @@ public class CreaPuzzle extends AppCompatActivity {
 
     public void checkGameOver() { //siempre controla si el juego esta terminado o no...
         if (isGameOver()) {
-
-            Intent intent = new Intent(getApplicationContext(), SeleccionarPuzzle.class);
-            intent.putExtra("puntaje",10);
-            startActivityForResult(intent, 0);
-            //finish();
+            Intent great = new Intent(getApplicationContext(), GreatMenu.class);
+            startActivity(great);
         }
     }
+
 
     private boolean isGameOver() {
         for (Piezas piece : pieces) {
@@ -301,7 +299,6 @@ public class CreaPuzzle extends AppCompatActivity {
                 return false;
             }
         }
-
         return true;
     }
 }

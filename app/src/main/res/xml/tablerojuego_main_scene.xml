@@ -35,12 +35,12 @@
             android:layout_width="410dp"
             android:id="@+id/tablero" />
         <Constraint
-            motion:layout_editor_absoluteY="3dp"
+            motion:layout_editor_absoluteY="0dp"
             android:id="@+id/timeRemaining"
             android:layout_width="54dp"
             android:layout_height="45dp"
             motion:layout_constraintStart_toEndOf="@+id/timeDown"
-            motion:layout_editor_absoluteX="117dp" />
+            motion:layout_editor_absoluteX="100dp" />
         <Constraint
             android:id="@+id/imageView2"
             motion:layout_constraintEnd_toEndOf="parent"

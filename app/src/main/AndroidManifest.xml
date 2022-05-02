@@ -20,6 +20,8 @@
         <activity android:name=".SeleccionarPuzzle"></activity>
         <activity android:name=".CreaPuzzle"></activity>
         <activity android:name=".Menu"></activity>
+        <activity android:name=".NoTime"></activity>
+        <activity android:name=".GreatMenu"></activity>
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
