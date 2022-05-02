@@ -16,8 +16,10 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,9 +31,16 @@ import java.util.Collections;
 import java.util.Random;
 
 public class CreaPuzzle extends AppCompatActivity {
+
+    // ----- ATTRIBUTES -----
     ArrayList<Piezas> pieces;
     String mCurrentPhotoPath;
     String mCurrentPhotoUri;
+
+
+    // --- MEMBER REFERENCES -
+    TextView timeRemaining;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,7 @@ public class CreaPuzzle extends AppCompatActivity {
 
         final RelativeLayout layout = findViewById(R.id.tablero);
         final ImageView imageView = findViewById(R.id.imageView);
+        this.timeRemaining = findViewById(R.id.timeRemaining);
 
         Intent intent = getIntent();
         final String assetName = intent.getStringExtra("assetName"); //obtiene la imagen seleccionada por el jugador
@@ -65,6 +75,16 @@ public class CreaPuzzle extends AppCompatActivity {
                     lParams.topMargin = layout.getHeight() - piece.pieceHeight;
                     piece.setLayoutParams(lParams);
                 }
+                new CountDownTimer(200000, 1000){
+                    public void onTick(long initialTime) {
+                        timeRemaining.setText(String.valueOf(initialTime / 1000));
+                    }
+
+                    public void onFinish(){
+                        Intent noTime = new Intent(getApplicationContext(), NoTime.class);
+                        startActivity(noTime);
+                    }
+                }.start();
             }
         });
     }
@@ -284,8 +304,6 @@ public class CreaPuzzle extends AppCompatActivity {
 
         return true;
     }
-
-
 }
 
 
