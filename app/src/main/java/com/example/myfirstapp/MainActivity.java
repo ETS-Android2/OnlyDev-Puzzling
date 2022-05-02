@@ -145,23 +145,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         this.exit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //Close connection to database
-//                MainActivity.this.sqlManager.close();
-//                finish();
-//            }
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SeleccionarPuzzle.class);
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-
-                //Toast.makeText(MainActivity.this, "You've pressed the exit button",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Bye bye, see you soon!",Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
 
     public boolean areFieldsFulfill() {
