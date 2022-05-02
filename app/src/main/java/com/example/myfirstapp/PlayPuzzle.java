@@ -43,7 +43,17 @@ public class PlayPuzzle extends AppCompatActivity {
         final ConstraintLayout layout = findViewById(R.id.playMenuUI);
         this.timeRemaining = findViewById(R.id.timeRemaining);
         ImageView puzzle = findViewById(R.id.puzzle);
-        PlayPuzzle.this.countDown(20L); //TODO: change time value depending on image
+        new CountDownTimer(200000, 1000){
+            public void onTick(long initialTime) {
+                PlayPuzzle.this.timeRemaining.setText(String.valueOf(initialTime / 1000));
+            }
+
+            public void onFinish(){
+                Intent noTime = new Intent(getApplicationContext(), NoTime.class);
+                startActivity(noTime);
+            }
+        }.start();
+
         Intent i= new Intent(this,MusicManager.class);
         startService(i);
         // run image related code after the view was laid out
@@ -85,23 +95,5 @@ public class PlayPuzzle extends AppCompatActivity {
             height += heightFromPieces;
         }
         return pieces;
-    }
-
-    public void countDown(Long initialTime){
-        //Time is passed as seconds
-        initialTime = initialTime * 1000;
-        CountDownTimer countDownTimer = new CountDownTimer(initialTime, 1000) { //Decreasing by seconds
-            @Override
-            public void onTick(long timeRemaining) {
-                String countDownShown = String.valueOf(timeRemaining / 1000);
-                PlayPuzzle.this.timeRemaining.setText(countDownShown);
-            }
-
-            @Override
-            public void onFinish() {
-                Intent noTime = new Intent(getApplicationContext(), NoTime.class);
-                startActivity(noTime);
-            }
-        }.start();
     }
 }
