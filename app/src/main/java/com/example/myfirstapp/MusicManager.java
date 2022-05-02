@@ -3,12 +3,16 @@ package com.example.myfirstapp;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
 public class MusicManager extends Service {
    MediaPlayer player;
+   int op;
+   Uri patchSound;
+   String patchSoundString;
 
    public MusicManager(){
 
@@ -28,7 +32,9 @@ public class MusicManager extends Service {
 
     @Override
     public void onDestroy() {
-        player.stop();
+
+       super.onDestroy();
+       player.stop();
     }
 
     @Override
