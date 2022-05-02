@@ -59,7 +59,7 @@
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/logIn"
+        android:id="@+id/signUp"
         android:layout_width="234dp"
         android:layout_height="77dp"
         android:layout_marginBottom="16dp"
@@ -111,7 +111,7 @@
         android:textColor="#c41212"
         android:textColorHint="@color/colorAccent"
         app:fontFamily="@font/regular"
-        app:layout_constraintBottom_toTopOf="@+id/logIn"
+        app:layout_constraintBottom_toTopOf="@+id/signUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,6 +143,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_style"
+        android:contentDescription="@string/backButton"
         android:drawableBottom="@drawable/ic_soundon"
         android:onClick="play"
         android:textColor="#c41212"
@@ -160,6 +161,7 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_style"
+        android:contentDescription="@string/exitButton"
         android:drawableBottom="@drawable/ic_soundoff"
         android:onClick="stop"
         android:textColor="#c41212"

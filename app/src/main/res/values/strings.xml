@@ -29,6 +29,8 @@
     <string name="logInButton">SIGN UP</string>
     <string name="signInButton">SIGN IN</string>
     <string name="helpButton">\?</string>
-
+    <string name="preferenceFileKey">UserPreferences</string>
+    <string name="highScore">highScore</string>
+    <string name="userMail">userMail</string>
 
 </resources>

@@ -1,9 +1,11 @@
 package com.example.myfirstapp;
 
+import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;//modifLeon
 import androidx.core.content.FileProvider;
 
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,7 +29,7 @@ import logicClasses.UserFactory;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     // ---- Member references ------- //
-    private Button logIn, signIn, help, exit;
+    private Button signUp, signIn, help, exit;
     private EditText mail, password;
 
     // ----- AUDIO ------------ //
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //Setting value for the member references from the first layout
-        this.logIn = findViewById(R.id.logIn);
+        this.signUp = findViewById(R.id.signUp);
         this.signIn = findViewById(R.id.signIn);
         this.help = findViewById(R.id.help);
         this.exit = findViewById(R.id.exit);
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //Button listeners
-        this.signIn.setOnClickListener(new View.OnClickListener() {
+        this.signUp.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -92,6 +94,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             long createStatement = MainActivity.this.sqlManager.createOneUser(user);
                             Toast.makeText(MainActivity.this, "User \"" + user.getMail() +
                                     "\" created successfully.", Toast.LENGTH_LONG).show();
+                            //Saving in shared preferences the user
+                            MainActivity.this.saveInSharedPreferences(getString(R.string.userMail),
+                                    user.getMail());
                             //Getting in Menu layout
                             Intent startLayout = new Intent(getApplicationContext(), Menu.class);
                             startActivity(startLayout);
@@ -111,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        this.logIn.setOnClickListener(new View.OnClickListener() {
+        this.signIn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -122,9 +127,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     User userRetrieved = MainActivity.this.sqlManager.
                             retrieveUser(mail);
                     if (userInserted.equals(userRetrieved)) {
+                        //Saving in shared preferences the user
+                        MainActivity.this.saveInSharedPreferences(getString(R.string.userMail),
+                                userRetrieved.getMail());
                         //Getting in Menu layout
                         Intent startLayout = new Intent(getApplicationContext(), Menu.class);
-
                         startLayout.putExtras(bundle);
                         startActivity(startLayout);
                     } else {
@@ -154,6 +161,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, "Bye bye, see you soon!",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void saveInSharedPreferences(String key, String value) {
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.preferenceFileKey), Context.MODE_PRIVATE);
+        //Saving data in shared preferences
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, value);
+        editor.apply();
     }
 
     public boolean areFieldsFulfill() {
