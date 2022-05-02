@@ -50,6 +50,7 @@ public class CreaPuzzle extends AppCompatActivity {
 
         final RelativeLayout layout = findViewById(R.id.tablero);
         final ImageView imageView = findViewById(R.id.imageView);
+        this.timeRemaining = findViewById(R.id.timeRemaining);
 
         Intent intent = getIntent();
         final String assetName = intent.getStringExtra("assetName"); //obtiene la imagen seleccionada por el jugador
@@ -74,7 +75,16 @@ public class CreaPuzzle extends AppCompatActivity {
                     lParams.topMargin = layout.getHeight() - piece.pieceHeight;
                     piece.setLayoutParams(lParams);
                 }
-                CreaPuzzle.this.countDown(20L); //TODO: change time value depending on image
+                new CountDownTimer(200000, 1000){
+                    public void onTick(long initialTime) {
+                        timeRemaining.setText(String.valueOf(initialTime / 1000));
+                    }
+
+                    public void onFinish(){
+                        Intent noTime = new Intent(getApplicationContext(), NoTime.class);
+                        startActivity(noTime);
+                    }
+                }.start();
             }
         });
     }
@@ -294,25 +304,6 @@ public class CreaPuzzle extends AppCompatActivity {
 
         return true;
     }
-
-    public void countDown(Long initialTime){
-        //Time is passed as seconds
-        initialTime = initialTime * 1000;
-        CountDownTimer countDownTimer = new CountDownTimer(initialTime, 1000) { //Decreasing by seconds
-            @Override
-            public void onTick(long timeRemaining) {
-                String countDownShown = String.valueOf(timeRemaining / 1000);
-                CreaPuzzle.this.timeRemaining.setText(countDownShown);
-            }
-
-            @Override
-            public void onFinish() {
-                Intent noTime = new Intent(getApplicationContext(), NoTime.class);
-                startActivity(noTime);
-            }
-        }.start();
-    }
-
 }
 
 

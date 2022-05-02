@@ -45,7 +45,7 @@ public class PlayPuzzle extends AppCompatActivity {
         ImageView puzzle = findViewById(R.id.puzzle);
         new CountDownTimer(200000, 1000){
             public void onTick(long initialTime) {
-                PlayPuzzle.this.timeRemaining.setText(String.valueOf(initialTime / 1000));
+                timeRemaining.setText(String.valueOf(initialTime / 1000));
             }
 
             public void onFinish(){
