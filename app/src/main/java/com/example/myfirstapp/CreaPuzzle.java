@@ -16,8 +16,10 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,9 +31,16 @@ import java.util.Collections;
 import java.util.Random;
 
 public class CreaPuzzle extends AppCompatActivity {
+
+    // ----- ATTRIBUTES -----
     ArrayList<Piezas> pieces;
     String mCurrentPhotoPath;
     String mCurrentPhotoUri;
+
+
+    // --- MEMBER REFERENCES -
+    TextView timeRemaining;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +74,7 @@ public class CreaPuzzle extends AppCompatActivity {
                     lParams.topMargin = layout.getHeight() - piece.pieceHeight;
                     piece.setLayoutParams(lParams);
                 }
+                CreaPuzzle.this.countDown(20L); //TODO: change time value depending on image
             }
         });
     }
@@ -283,6 +293,24 @@ public class CreaPuzzle extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    public void countDown(Long initialTime){
+        //Time is passed as seconds
+        initialTime = initialTime * 1000;
+        CountDownTimer countDownTimer = new CountDownTimer(initialTime, 1000) { //Decreasing by seconds
+            @Override
+            public void onTick(long timeRemaining) {
+                String countDownShown = String.valueOf(timeRemaining / 1000);
+                CreaPuzzle.this.timeRemaining.setText(countDownShown);
+            }
+
+            @Override
+            public void onFinish() {
+                Intent noTime = new Intent(getApplicationContext(), NoTime.class);
+                startActivity(noTime);
+            }
+        }.start();
     }
 
 

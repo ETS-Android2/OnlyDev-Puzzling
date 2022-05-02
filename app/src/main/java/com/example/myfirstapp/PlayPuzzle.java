@@ -13,9 +13,13 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
+import logicClasses.SQLManager;
+
 public class PlayPuzzle extends AppCompatActivity {
     // --- ATTRIBUTES --------
     ArrayList<Bitmap> pieces;
+    SQLManager sqlManager = new SQLManager(PlayPuzzle.this, "PuzzlingDatabase",
+            null, 1);
 
     // --- MEMBER REFERENCES -
     TextView timeRemaining;
