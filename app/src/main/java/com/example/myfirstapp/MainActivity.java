@@ -37,11 +37,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SQLManager sqlManager = new SQLManager(MainActivity.this, "PuzzlingDatabase",
             null, 1);
 
+    int op=1;
+    Bundle bundle=new Bundle();
 
     @Override
     public void onResume() {
         super.onResume();
         Intent i= new Intent(this,MusicManager.class);
+
         startService(i);
     }
     @Override
@@ -52,11 +55,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sesion_main);
         //iniciar();
         Intent i= new Intent(this,MusicManager.class);
+
+        bundle.putInt("opcion",op);
         startService(i);
+
 
         //Setting value for the member references from the first layout
         this.logIn = findViewById(R.id.logIn);
@@ -114,6 +124,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (userInserted.equals(userRetrieved)) {
                         //Getting in Menu layout
                         Intent startLayout = new Intent(getApplicationContext(), Menu.class);
+
+                        startLayout.putExtras(bundle);
                         startActivity(startLayout);
                     } else {
                         Toast.makeText(MainActivity.this, "The user or password given " +
@@ -148,6 +160,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+
+
     }
 
     public boolean areFieldsFulfill() {
@@ -170,19 +184,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void play(View view) {
         Intent i= new Intent(this,MusicManager.class);
+        bundle.putInt("opcion",1);
         startService(i);
+
     }
 
 
 
     public void pause(View view) {
         if (player != null){
+
             player.pause();
         }
     }
 
     public void stop(View view) {
         Intent i= new Intent(this,MusicManager.class);
+        bundle.putInt("opcion",0);
         stopService(i);
     }
 
@@ -191,6 +209,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
 
     }
+   /* public boolean returnOp(){
+        return op;
+    }*/
 
     String currentPhotoPath;
     private File createImageFile() throws IOException {
@@ -229,5 +250,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
 }
 
