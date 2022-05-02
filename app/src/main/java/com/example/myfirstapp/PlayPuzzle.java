@@ -41,6 +41,7 @@ public class PlayPuzzle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_menu); //Matching this class with the play_menu UI
         final ConstraintLayout layout = findViewById(R.id.playMenuUI);
+        this.timeRemaining = findViewById(R.id.timeRemaining);
         ImageView puzzle = findViewById(R.id.puzzle);
         PlayPuzzle.this.countDown(20L); //TODO: change time value depending on image
         Intent i= new Intent(this,MusicManager.class);
