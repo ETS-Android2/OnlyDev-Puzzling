@@ -26,7 +26,7 @@
     <!-- Session UI -->
     <string name="insertMailInput">INSERT E-MAIL</string>
     <string name="insertPasswordInput">INSERT PASSWORD</string>
-    <string name="logInButton">LOG IN</string>
+    <string name="logInButton">SIGN UP</string>
     <string name="signInButton">SIGN IN</string>
     <string name="helpButton">\?</string>
 

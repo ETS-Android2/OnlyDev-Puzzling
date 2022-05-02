@@ -6,13 +6,20 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
+import android.widget.TextView;
 import android.widget.ImageView;
+import android.os.CountDownTimer;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
 public class PlayPuzzle extends AppCompatActivity {
+    // --- ATTRIBUTES --------
     ArrayList<Bitmap> pieces;
+
+    // --- MEMBER REFERENCES -
+    TextView timeRemaining;
+
     @Override
     public void onResume() {
         super.onResume();
@@ -29,9 +36,9 @@ public class PlayPuzzle extends AppCompatActivity {
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_menu); //Matching this class with the play_menu UI
-
         final ConstraintLayout layout = findViewById(R.id.playMenuUI);
         ImageView puzzle = findViewById(R.id.puzzle);
+        PlayPuzzle.this.countDown(20L); //TODO: change time value depending on image
         Intent i= new Intent(this,MusicManager.class);
         startService(i);
         // run image related code after the view was laid out
@@ -73,5 +80,23 @@ public class PlayPuzzle extends AppCompatActivity {
             height += heightFromPieces;
         }
         return pieces;
+    }
+
+    public void countDown(Long initialTime){
+        //Time is passed as seconds
+        initialTime = initialTime * 1000;
+        CountDownTimer countDownTimer = new CountDownTimer(initialTime, 1000) { //Decreasing by seconds
+            @Override
+            public void onTick(long timeRemaining) {
+                String countDownShown = String.valueOf(timeRemaining / 1000);
+                PlayPuzzle.this.timeRemaining.setText(countDownShown);
+            }
+
+            @Override
+            public void onFinish() {
+                Intent noTime = new Intent(getApplicationContext(), NoTime.class);
+                startActivity(noTime);
+            }
+        }.start();
     }
 }
