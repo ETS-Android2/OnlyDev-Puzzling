@@ -30,8 +30,8 @@ public class GreatMenu extends AppCompatActivity implements View.OnClickListener
         this.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent selecction_main = new Intent(getApplicationContext(), SeleccionarPuzzle.class);
-                startActivity(selecction_main);
+                Intent seleccion_main = new Intent(getApplicationContext(), SeleccionarPuzzle.class);
+                startActivity(seleccion_main);
             }
         });
     }
