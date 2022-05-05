@@ -47,6 +47,24 @@ public class CreaPuzzle extends AppCompatActivity {
 
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Intent i= new Intent(this,MusicManager.class);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
+
+        if(op==1) {
+            startService(i);
+        }
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        Intent i= new Intent(this,MusicManager.class);
+        stopService(i);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -55,6 +73,14 @@ public class CreaPuzzle extends AppCompatActivity {
         final RelativeLayout layout = findViewById(R.id.tablero);
         final ImageView imageView = findViewById(R.id.imageView);
         this.timeDown = findViewById(R.id.timeDown);
+
+        Intent i= new Intent(this,MusicManager.class);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
+
+        if(op==1) {
+            startService(i);
+        }
 
         Intent intent = getIntent();
         final String assetName = intent.getStringExtra("assetName"); //obtiene la imagen seleccionada por el jugador
@@ -299,7 +325,7 @@ public class CreaPuzzle extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putLong(getString(R.string.highScore), CreaPuzzle.this.score);
                 //createNewDialog();
-                Toast.makeText(CreaPuzzle.this, "Your new score is" +
+                Toast.makeText(CreaPuzzle.this, "Your new score is " +
                         score,Toast.LENGTH_SHORT).show();
             }
             Toast.makeText(CreaPuzzle.this, "You've completed the puzzle",
