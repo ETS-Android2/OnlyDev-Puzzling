@@ -28,7 +28,11 @@ public class PlayPuzzle extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         Intent i= new Intent(this,MusicManager.class);
-        startService(i);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
+        //if(op==1) {
+            startService(i);
+        //}
     }
     @Override
     public void onPause() {
@@ -38,6 +42,13 @@ public class PlayPuzzle extends AppCompatActivity {
     }
     @Override
     public void onCreate (Bundle savedInstanceState) {
+        Intent i= new Intent(this,MusicManager.class);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
+
+        if(op==1) {
+            startService(i);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_menu); //Matching this class with the play_menu UI
         final ConstraintLayout layout = findViewById(R.id.playMenuUI);
@@ -54,8 +65,7 @@ public class PlayPuzzle extends AppCompatActivity {
             }
         }.start();
 
-        Intent i= new Intent(this,MusicManager.class);
-        startService(i);
+
         // run image related code after the view was laid out
         // to have all dimensions calculated
         puzzle.post(new Runnable(){

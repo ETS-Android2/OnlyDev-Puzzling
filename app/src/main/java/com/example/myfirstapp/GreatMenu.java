@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 public class GreatMenu extends AppCompatActivity implements View.OnClickListener {
 
     private Button exit,next;
+    int op;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.great);
 
@@ -26,6 +29,7 @@ public class GreatMenu extends AppCompatActivity implements View.OnClickListener
                 startActivity(main_menu);
             }
         });
+
 
         this.next.setOnClickListener(new View.OnClickListener() {
             @Override

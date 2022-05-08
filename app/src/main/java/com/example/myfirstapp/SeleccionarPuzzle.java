@@ -34,6 +34,7 @@ public class SeleccionarPuzzle extends AppCompatActivity implements View.OnClick
 
     private static final int TAKE_PICTURE = 101;
     Bitmap btimage;
+    Bundle bundle=new Bundle();
 
     @Override
     public void onResume() {
@@ -87,7 +88,10 @@ public class SeleccionarPuzzle extends AppCompatActivity implements View.OnClick
                     Intent intent = new Intent(getApplicationContext(), CreaPuzzle.class);//envia al juego la imagen seleccionada
                     //por el jugador
                     intent.putExtra("assetName", files[i % files.length]);
+                    bundle.putInt("opcion",op);
+                    intent.putExtras(bundle);
                     startActivity(intent);
+
                 }
             });
         } catch (

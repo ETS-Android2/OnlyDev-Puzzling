@@ -328,8 +328,10 @@ public class CreaPuzzle extends AppCompatActivity {
                 Toast.makeText(CreaPuzzle.this, "Your new score is " +
                         score,Toast.LENGTH_SHORT).show();
             }
-            Toast.makeText(CreaPuzzle.this, "You've completed the puzzle",
-                    Toast.LENGTH_LONG).show();
+            /*Toast.makeText(CreaPuzzle.this, "You've completed the puzzle",
+                    Toast.LENGTH_LONG).show();*/
+            Intent i = new Intent(this, GreatMenu.class);
+            startActivity(i);
         }
     }
 
