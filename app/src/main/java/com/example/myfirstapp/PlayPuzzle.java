@@ -6,31 +6,66 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
+import android.widget.TextView;
+import android.widget.ImageView;
 import android.os.CountDownTimer;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import logicClasses.SQLManager;
 
 public class PlayPuzzle extends AppCompatActivity {
     // --- ATTRIBUTES --------
     ArrayList<Bitmap> pieces;
+    SQLManager sqlManager = new SQLManager(PlayPuzzle.this, "PuzzlingDatabase",
+            null, 1);
 
     // --- MEMBER REFERENCES -
     TextView timeRemaining;
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Intent i= new Intent(this,MusicManager.class);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
+        //if(op==1) {
+            startService(i);
+        //}
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        Intent i= new Intent(this,MusicManager.class);
+        stopService(i);
+    }
+    @Override
     public void onCreate (Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.play_menu);
+        Intent i= new Intent(this,MusicManager.class);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
 
-        //Setting value for the member references from the first layout
-        this.timeRemaining = findViewById(R.id.timeDown);
+        if(op==1) {
+            startService(i);
+        }
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.play_menu); //Matching this class with the play_menu UI
         final ConstraintLayout layout = findViewById(R.id.playMenuUI);
+        this.timeRemaining = findViewById(R.id.timeRemaining);
         ImageView puzzle = findViewById(R.id.puzzle);
-        PlayPuzzle.this.countDown(200L);
+        new CountDownTimer(200000, 1000){
+            public void onTick(long initialTime) {
+                timeRemaining.setText(String.valueOf(initialTime / 1000));
+            }
+
+            public void onFinish(){
+                Intent noTime = new Intent(getApplicationContext(), NoTime.class);
+                startActivity(noTime);
+            }
+        }.start();
+
+
         // run image related code after the view was laid out
         // to have all dimensions calculated
         puzzle.post(new Runnable(){
@@ -70,23 +105,5 @@ public class PlayPuzzle extends AppCompatActivity {
             height += heightFromPieces;
         }
         return pieces;
-    }
-
-    public void countDown(Long initialTime){ //TODO: add parameter "String imageName" to change value depending on image name:
-        //Time is passed as seconds
-        initialTime = initialTime * 1000;
-        CountDownTimer countDownTimer = new CountDownTimer(initialTime, 1000) { //Decreasing by seconds
-            @Override
-            public void onTick(long timeRemaining) {
-                String countDownShown = String.valueOf(timeRemaining / 1000);
-                PlayPuzzle.this.timeRemaining.setText(countDownShown);
-            }
-
-            @Override
-            public void onFinish() {
-                Intent noTime = new Intent(getApplicationContext(), NoTime.class);
-                startActivity(noTime);
-            }
-        }.start();
     }
 }

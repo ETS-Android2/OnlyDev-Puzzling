@@ -2,7 +2,9 @@ package com.example.myfirstapp;
 
 import static java.lang.Math.abs;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,10 +18,14 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
@@ -29,9 +35,34 @@ import java.util.Collections;
 import java.util.Random;
 
 public class CreaPuzzle extends AppCompatActivity {
+
+    // ----- ATTRIBUTES -----
     ArrayList<Piezas> pieces;
     String mCurrentPhotoPath;
     String mCurrentPhotoUri;
+    long score;
+
+    // --- MEMBER REFERENCES -
+    TextView timeDown;
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Intent i= new Intent(this,MusicManager.class);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
+
+        if(op==1) {
+            startService(i);
+        }
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        Intent i= new Intent(this,MusicManager.class);
+        stopService(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +72,15 @@ public class CreaPuzzle extends AppCompatActivity {
 
         final RelativeLayout layout = findViewById(R.id.tablero);
         final ImageView imageView = findViewById(R.id.imageView);
+        this.timeDown = findViewById(R.id.timeDown);
+
+        Intent i= new Intent(this,MusicManager.class);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
+
+        if(op==1) {
+            startService(i);
+        }
 
         Intent intent = getIntent();
         final String assetName = intent.getStringExtra("assetName"); //obtiene la imagen seleccionada por el jugador
@@ -65,6 +105,17 @@ public class CreaPuzzle extends AppCompatActivity {
                     lParams.topMargin = layout.getHeight() - piece.pieceHeight;
                     piece.setLayoutParams(lParams);
                 }
+                new CountDownTimer(50000, 1000){
+                    public void onTick(long initialTime) {
+                        timeDown.setText(String.valueOf(initialTime / 1000));
+                        score = initialTime / 1000;
+                    }
+
+                    public void onFinish(){
+                        Intent noTime = new Intent(getApplicationContext(), NoTime.class);
+                        startActivity(noTime);
+                    }
+                }.start();
             }
         });
     }
@@ -266,28 +317,55 @@ public class CreaPuzzle extends AppCompatActivity {
     }
 
     public void checkGameOver() { //siempre controla si el juego esta terminado o no...
-        if (isGameOver()) {
-
-            Intent intent = new Intent(getApplicationContext(), SeleccionarPuzzle.class);
-            intent.putExtra("puntaje",10);
-            startActivityForResult(intent, 0);
-            //finish();
+        if (isPuzzleCompleted()) {
+            SharedPreferences sharedPreferences = getSharedPreferences(
+                    getString(R.string.preferenceFileKey), Context.MODE_PRIVATE);
+            long highScore = sharedPreferences.getLong(getString(R.string.highScore), 0L);
+            if (CreaPuzzle.this.score > highScore){
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putLong(getString(R.string.highScore), CreaPuzzle.this.score);
+                //createNewDialog();
+                Toast.makeText(CreaPuzzle.this, "Your new score is " +
+                        score,Toast.LENGTH_SHORT).show();
+            }
+            /*Toast.makeText(CreaPuzzle.this, "You've completed the puzzle",
+                    Toast.LENGTH_LONG).show();*/
+            Intent i = new Intent(this, GreatMenu.class);
+            startActivity(i);
         }
     }
 
-    private boolean isGameOver() {
+    private boolean isPuzzleCompleted() {
         for (Piezas piece : pieces) {
             if (piece.canMove) {
                 return false;
             }
         }
-
         return true;
     }
 
-
+//    private void createNewDialog(){
+//        dialogBuilder = new AlertDialog.Builder(this);
+//        final View newHighScore = getLayoutInflater().inflate(R.layout.high_score_show, null);
+//        seeHighScoreButton = (Button) newHighScore.findViewById(R.id.finish_score);
+//        exitButton = (Button) newHighScore.findViewById(R.id.finish_exit);
+//
+//        dialogBuilder.setView(newHighScore);
+//        alertDialog = dialogBuilder.create();
+//        alertDialog.show();
+//
+//        seeHighScoreButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(CreaPuzzle.this, PopupWindow.class));
+//            }
+//        });
+//
+//        exitButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                alertDialog.dismiss();
+//            }
+//        });
+//    }
 }
-
-
-
-

@@ -1,54 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreaPuzzle"
-    android:background="@drawable/background">
-
+    android:background="@drawable/background"
+    app:layoutDescription="@xml/tablerojuego_main_scene"
+    tools:context=".CreaPuzzle">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:shadowColor="#000000"
-        android:text="@string/appName"
-        android:textColor="#b55e1c"
-        android:textSize="70sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/adigiana"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:targetApi="jelly_bean" />
+        android:id="@+id/timeDown"
+        android:layout_width="84dp"
+        android:layout_height="55dp"
+        android:layout_weight="1"
+        android:text="@string/timeRemaining"
+        android:textColor="@color/redPuzzling"
+        android:textSize="48sp"
+        app:fontFamily="@font/regular"
+        tools:layout_editor_absoluteX="16dp" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="322dp"
-        android:layout_height="389dp"
-        android:alpha="1.0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/timeRemaining"
+        android:layout_width="53dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toStartOf="@+id/timeDown"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/zonajuegopapel"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/timer" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="318dp"
-        android:layout_height="370dp"
-        android:alpha="0.5"
+        android:layout_width="294dp"
+        android:layout_height="372dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginRight="116dp"
+        android:layout_marginBottom="267dp"
+        android:alpha="0.3"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tablero"
         app:layout_constraintStart_toStartOf="@+id/tablero"
         app:layout_constraintTop_toTopOf="@+id/textView3"
         app:srcCompat="@drawable/zonajuegopapel"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="322dp"
+        android:layout_height="389dp"
+        android:alpha="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/zonajuegopapel"
+        tools:ignore="MissingConstraints,ImageContrastCheck" />
 
     <RelativeLayout
         android:id="@+id/tablero"
@@ -60,6 +67,5 @@
 
     </RelativeLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
 

@@ -18,6 +18,14 @@ public class Score {
 
     // ------ GETTERS & SETTERS ----- //
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public int getIdScore() {
         return idScore;
     }

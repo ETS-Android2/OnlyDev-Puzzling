@@ -8,8 +8,32 @@ import android.widget.Button;
 
 public class Menu extends AppCompatActivity implements View.OnClickListener{
 
+
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Intent i= new Intent(this,MusicManager.class);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
+
+        if(op==1) {
+            startService(i);
+        }
+
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        Intent in= new Intent(this,MusicManager.class);
+        stopService(in);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
 
@@ -20,6 +44,14 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         playBtn.setOnClickListener((View.OnClickListener) this);
         settingsBtn.setOnClickListener((View.OnClickListener) this);
         exitBtn.setOnClickListener((View.OnClickListener) this);
+
+       Intent i= new Intent(this,MusicManager.class);
+        Bundle datos=getIntent().getExtras();
+        int op= datos.getInt("opcion");
+
+        if(op==1) {
+            startService(i);
+        }
     }
 
     @Override
@@ -28,13 +60,12 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         switch (view.getId()){
 
             case R.id.playButton:
-                Intent intent = new Intent(this, Menu.class);
-                startActivity(intent);
-                break;
-
-
-            case R.id.settingsButton: //go to help View
-                intent = new Intent(this, Help.class);
+                Intent intent = new Intent(Menu.this, SeleccionarPuzzle.class);
+                Bundle bundle2= new Bundle();
+                Bundle datos=getIntent().getExtras();
+                int op= datos.getInt("opcion");
+                bundle2.putInt("opcion",op);
+                intent.putExtras(bundle2);
                 startActivity(intent);
                 break;
 
@@ -43,4 +74,5 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                 break;
         }
     }
+
 }

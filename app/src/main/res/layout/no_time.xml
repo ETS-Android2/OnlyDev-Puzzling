@@ -16,7 +16,7 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <Button
-        android:id="@+id/noTime.retry"
+        android:id="@+id/retryR"
         android:layout_width="267dp"
         android:layout_height="65dp"
         android:layout_marginTop="48dp"
@@ -31,20 +31,20 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/noTime.exit"
+        android:id="@+id/exitR"
         android:layout_width="136dp"
         android:layout_height="69dp"
-        android:layout_marginTop="48dp"
         android:background="@drawable/button_style"
         android:text="@string/exitButton"
         android:textColor="@color/redPuzzling"
         android:textSize="50sp"
         android:textStyle="bold"
         app:fontFamily="@font/regular"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noTime.retry" />
+        app:layout_constraintTop_toBottomOf="@+id/retryR" />
 
     <ImageView
         android:id="@+id/imageView2"
