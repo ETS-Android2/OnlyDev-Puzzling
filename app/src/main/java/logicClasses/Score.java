@@ -50,13 +50,13 @@ public class Score {
         this.score = score;
     }
 
-    public int getLevel() {
+   /* public int getLevel() {
         return level;
     }
 
     public void setLevel(int level) {
         this.level = level;
-    }
+    }*/
 
     // ---- METHODS ----- //
 

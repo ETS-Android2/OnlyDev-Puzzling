@@ -24,6 +24,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <Button
         android:id="@+id/exit"
         android:layout_width="234dp"
@@ -31,10 +32,10 @@
         android:layout_marginBottom="84dp"
         android:background="@drawable/button_style"
         android:text="@string/exitButton"
-        app:fontFamily="@font/regular"
         android:textColor="#FF3D00"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:fontFamily="@font/regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -171,5 +172,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button"
         tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/google"
+        android:layout_width="62dp"
+        android:layout_height="63dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729"
+        app:srcCompat="@drawable/_ndice"
+        tools:ignore="MissingClass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

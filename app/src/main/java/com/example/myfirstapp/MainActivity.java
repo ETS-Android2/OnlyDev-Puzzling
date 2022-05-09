@@ -2,6 +2,8 @@ package com.example.myfirstapp;
 
 import android.content.Context;
 import android.content.Intent;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;//modifLeon
 import androidx.core.content.FileProvider;
 
@@ -11,10 +13,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int op=1;
     Bundle bundle=new Bundle();
 
+    GoogleSignInClient gsc;
+    GoogleSignInOptions gso;
+    ImageView googleBtn;
+
     @Override
     public void onResume() {
         super.onResume();
@@ -57,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
 
 
 
@@ -161,7 +178,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, "Bye bye, see you soon!",Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        this.googleBtn = findViewById(R.id.google);
+        gso= new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        gsc= GoogleSignIn.getClient(this,gso);
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
+        googleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                signInGoogle();
+            }
+        });
     }
+
+
 
     private void saveInSharedPreferences(String key, String value) {
         SharedPreferences sharedPreferences = getSharedPreferences(
@@ -257,6 +294,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
         }
+    }
+
+    void signInGoogle(){
+        Intent signGoogle = gsc.getSignInIntent();
+        startActivityForResult(signGoogle,100);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==100){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+
+        }
+    }
+    void navigateToSecondActivity(){
+
+        Intent intent = new Intent(MainActivity.this,Menu.class);
+        startActivity(intent);
+
+    }
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            GoogleSignInAccount acct= GoogleSignIn.getLastSignedInAccount(this);
+            if(acct!=null){
+                String personName = acct.getDisplayName();
+                String personGivenName= acct.getGivenName();
+                String personFamilyName = acct.getFamilyName();
+                String personEmail = acct.getEmail();
+                String personId = acct.getId();
+                Uri personPhoto = acct.getPhotoUrl();
+
+            }
+            navigateToSecondActivity();
+        } catch (ApiException e) {
+            e.printStackTrace();
+            Log.d("Message",e.toString());
+        }
+
+
     }
 
 }
