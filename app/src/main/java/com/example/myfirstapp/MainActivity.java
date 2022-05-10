@@ -3,6 +3,7 @@ package com.example.myfirstapp;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;//modifLeon
 import androidx.core.content.FileProvider;
@@ -24,8 +25,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthCredential;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,7 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     GoogleSignInClient gsc;
     GoogleSignInOptions gso;
-    ImageView googleBtn;
+    SignInButton googleBtn;
+    public static final int RC_SIGN_IN=0;
+    private FirebaseAuth mAuth;
 
     @Override
     public void onResume() {
@@ -72,11 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sesion_main);
@@ -98,13 +103,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Button listeners
         this.signUp.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 if (MainActivity.this.areFieldsFulfill()) {
                     User user = UserFactory.createUser(MainActivity.this.mail.getText().toString(),
                             MainActivity.this.password.getText().toString());
-
                     User userRetrieved = MainActivity.this.sqlManager.retrieveUser(user.getMail());
                     if (userRetrieved.getMail().isEmpty()) { //There is no user with same account
                         try { //Add user to database
@@ -134,7 +137,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         this.signIn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 if (MainActivity.this.areFieldsFulfill()) {
@@ -179,23 +181,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-
-        this.googleBtn = findViewById(R.id.google);
+        //Google sign-in
+        googleBtn = findViewById(R.id.google);
+        googleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signInGoogle();
+            }
+        });
         gso= new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.web_client_id))
                 .requestEmail()
                 .build();
 
         gsc= GoogleSignIn.getClient(this,gso);
+        //GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        mAuth = FirebaseAuth.getInstance();
 
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-
-        googleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                signInGoogle();
-            }
-        });
     }
 
 
@@ -298,44 +300,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void signInGoogle(){
         Intent signGoogle = gsc.getSignInIntent();
-        startActivityForResult(signGoogle,100);
+        startActivityForResult(signGoogle,RC_SIGN_IN);
 
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==100){
+        if(requestCode==RC_SIGN_IN){
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-
+                try {
+                    GoogleSignInAccount account = task.getResult(ApiException.class);
+                    firebaseAuthWithGoogle(account.getIdToken());
+                } catch (ApiException e) {
+                    Toast.makeText(MainActivity.this,"Fallo Google "+ e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
         }
     }
-    void navigateToSecondActivity(){
+    /*void navigateToSecondActivity(){
 
         Intent intent = new Intent(MainActivity.this,Menu.class);
         startActivity(intent);
 
-    }
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
-        try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+    }*/
+    private void firebaseAuthWithGoogle(String idToken){
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken,null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Intent intent = new Intent(MainActivity.this,Menu.class);
+                            startActivity(intent);
 
-            GoogleSignInAccount acct= GoogleSignIn.getLastSignedInAccount(this);
-            if(acct!=null){
-                String personName = acct.getDisplayName();
-                String personGivenName= acct.getGivenName();
-                String personFamilyName = acct.getFamilyName();
-                String personEmail = acct.getEmail();
-                String personId = acct.getId();
-                Uri personPhoto = acct.getPhotoUrl();
-
-            }
-            navigateToSecondActivity();
-        } catch (ApiException e) {
-            e.printStackTrace();
-            Log.d("Message",e.toString());
-        }
+                        }else{
+                            Toast.makeText(MainActivity.this, "Falló en iniciar sesión",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
 
     }

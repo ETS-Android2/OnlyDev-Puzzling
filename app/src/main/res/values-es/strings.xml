@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">PUZZLING</string>
+    <string name="playButton">JUGAR</string>
+    <string name="playMultiplayerButton">JUGAR CON AMIGOS</string>
+    <string name="scoreButton">PUNTUACIÓN</string>
+    <string name="settingsButton">AJUSTES</string>
+    <string name="exitButton">SALIR</string>
+
+    <string name="settingsPage">AJUSTES</string>
+    <string name="pausePage">PAUSA</string>
+    <!-- same buttons for both pages -->
+    <string name="musicButton">MUSICA</string>
+    <string name="effectsButton">EFECTOS</string>
+    <string name="backButton">VOLVER</string>
+    <string name="mainMenu">MENU PRINCIPAL</string>
+    <string name="web_client_id">322850285040-li7qtsh1hrk2091bvogjvmrrsa8defbd.apps.googleusercontent.com</string>
+
+
+    <string name="continueButton">CONTINUAR</string>
+    <string name="retryButton">REINTENTAR</string>
+    <string name="logOutButton">LOG OUT</string>
+
+    <!-- TODO: check if values from this xml can be modified by code -->
+    <string name="livesRemaining">3</string>
+    <string name="timeRemaining">120</string>
+
+    <!-- Session UI -->
+    <string name="insertMailInput">INSERTE E-MAIL</string>
+    <string name="insertPasswordInput">INSERTE CONTRASEÑA</string>
+    <string name="logInButton">REGISTRARSE</string>
+    <string name="signInButton">VALIDARSE</string>
+    <string name="helpButton">\?</string>
+    <string name="preferenceFileKey">UserPreferences</string>
+    <string name="highScore">highScore</string>
+    <string name="userMail">userMail</string>
+
+
+</resources>

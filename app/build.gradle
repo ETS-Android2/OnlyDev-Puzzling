@@ -29,7 +29,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.0'//modifLeon
     implementation 'androidx.mediarouter:mediarouter:1.2.5'//modifLeon
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.firebase:firebase-auth:19.2.0'//modifLeon
+    implementation 'com.google.firebase:firebase-auth'//modifLeon
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -40,7 +40,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'*/
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
-    //implementation 'com.google.firebase:firebase-auth:21.0.3'
+    implementation 'com.google.firebase:firebase-auth:21.0.3'
+
+
+
 
 
 }
