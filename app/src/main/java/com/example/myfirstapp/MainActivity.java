@@ -40,6 +40,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import logicClasses.SQLManager;
 import logicClasses.User;
 import logicClasses.UserFactory;
@@ -47,9 +49,21 @@ import logicClasses.UserFactory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+
     // ---- Member references ------- //
-    private Button signUp, signIn, help, exit;
-    private EditText mail, password;
+    @BindView(R.id.signUp)
+            Button signUp;
+    @BindView(R.id.signIn)
+            Button signIn;
+    @BindView(R.id.help)
+            Button help;
+    @BindView(R.id.exit)
+            Button exit;
+    @BindView(R.id.password)
+            EditText password;
+    @BindView(R.id.mail)
+            EditText mail;
+
 
     // ----- AUDIO ------------ //
     MediaPlayer player;
@@ -91,14 +105,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bundle.putInt("opcion",op);
         startService(i);
 
-
-        //Setting value for the member references from the first layout
-        this.signUp = findViewById(R.id.signUp);
-        this.signIn = findViewById(R.id.signIn);
-        this.help = findViewById(R.id.help);
-        this.exit = findViewById(R.id.exit);
-        this.mail = findViewById(R.id.mail);
-        this.password = findViewById(R.id.password);
+        ButterKnife.bind(this);
+        
 
 
         //Button listeners
