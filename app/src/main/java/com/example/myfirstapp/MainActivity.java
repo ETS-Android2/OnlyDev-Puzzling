@@ -1,5 +1,8 @@
 package com.example.myfirstapp;
 
+import static android.os.Environment.DIRECTORY_DOWNLOADS;
+
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 
@@ -28,12 +31,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
@@ -81,6 +88,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final int RC_SIGN_IN=0;
     private FirebaseAuth mAuth;
 
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
+    StorageReference ref;
+
     @Override
     public void onResume() {
         super.onResume();
@@ -96,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        downloadImages();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sesion_main);
         //iniciar();
@@ -347,6 +358,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
 
+
+    }
+
+    public void downloadImages(){
+        storageReference=firebaseStorage.getInstance().getReference();
+        ref=storageReference.child("images/puzzle4.jpg");
+
+        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                String url = uri.toString();
+                downloadFirebase(MainActivity.this,"puzzle3","jpg",DIRECTORY_DOWNLOADS,url);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+    }
+
+    public void downloadFirebase(Context context, String fileName, String fileExtension, String destinationDirectory, String url){
+        DownloadManager downloadmanager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        Uri uri = Uri.parse(url);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalFilesDir(context,destinationDirectory,fileName+fileExtension);
+
+        downloadmanager.enqueue(request);
 
     }
 
