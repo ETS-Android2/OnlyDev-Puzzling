@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        downloadImages();
+        //downloadImages();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sesion_main);
         //iniciar();
@@ -357,11 +357,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
-
-
     }
 
-    public void downloadImages(){
+    /*public void downloadImages(){
         storageReference=firebaseStorage.getInstance().getReference();
         ref=storageReference.child("images/puzzle4.jpg");
 
@@ -390,7 +388,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         downloadmanager.enqueue(request);
 
-    }
+    }*/
 
 }
 

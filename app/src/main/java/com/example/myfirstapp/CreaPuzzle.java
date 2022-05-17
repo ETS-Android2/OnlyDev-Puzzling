@@ -17,6 +17,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -25,8 +26,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,6 +51,9 @@ public class CreaPuzzle extends AppCompatActivity {
 
     // --- MEMBER REFERENCES -
     TextView timeDown;
+
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
 
 
     @Override
@@ -66,7 +76,7 @@ public class CreaPuzzle extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tablerojuego_main);
 
@@ -368,4 +378,5 @@ public class CreaPuzzle extends AppCompatActivity {
 //            }
 //        });
 //    }
+
 }
