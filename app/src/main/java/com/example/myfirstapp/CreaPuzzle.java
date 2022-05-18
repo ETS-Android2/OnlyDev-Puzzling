@@ -53,7 +53,9 @@ public class CreaPuzzle extends AppCompatActivity {
     TextView timeDown;
 
     FirebaseStorage firebaseStorage;
-    StorageReference storageReference;
+    StorageReference folder;
+
+
 
 
     @Override
@@ -76,7 +78,10 @@ public class CreaPuzzle extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        
+
+        //folder = FirebaseStorage.getInstance().getReference().child("images/puzzle4.jpg");
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tablerojuego_main);
 
@@ -93,8 +98,17 @@ public class CreaPuzzle extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        final String assetName = intent.getStringExtra("assetName"); //obtiene la imagen seleccionada por el jugador
+       // final String assetName = intent.getStringExtra("assetName"); //obtiene la imagen seleccionada por el jugador
+        String assetName="";
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        StorageReference dateRef = storageRef.child("images/puzzle4.jpg");
+        dateRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
 
+            }
+        });
+        //String assetName = "https://firebasestorage.googleapis.com/v0/b/onlydev-94888.appspot.com/o/images%2Fpuzzle3.jpg?alt=media&token=4d94e0f2-fa6f-4b80-81c7-f0078e253fb3";
         // ejecuta esto después de que la vista fue diseñada para tener todas las dimensiones calculadas
         imageView.post(new Runnable() {
             @Override

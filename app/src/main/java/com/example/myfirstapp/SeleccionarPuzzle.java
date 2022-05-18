@@ -87,7 +87,7 @@ public class SeleccionarPuzzle extends AppCompatActivity implements View.OnClick
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(getApplicationContext(), CreaPuzzle.class);//envia al juego la imagen seleccionada
                     //por el jugador
-                    intent.putExtra("assetName", files[i % files.length]);
+                    intent.putExtra("assetName", files[i]);
                     bundle.putInt("opcion",op);
                     intent.putExtras(bundle);
                     startActivity(intent);
@@ -100,24 +100,14 @@ public class SeleccionarPuzzle extends AppCompatActivity implements View.OnClick
         }
     }
 
-
-
-
-
-
-
-
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
 
             case R.id.help:
                 Intent intent = new Intent(this, Help.class);
                 startActivity(intent);
-
                 break;
-
             case R.id.botonvolver:
                 finish();
                 break;

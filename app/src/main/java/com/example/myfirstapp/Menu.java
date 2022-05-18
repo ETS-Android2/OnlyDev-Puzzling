@@ -72,14 +72,14 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
 
             case R.id.playButton:
                 //Intent intent = new Intent(Menu.this, SeleccionarPuzzle.class);
-                downloadFirebase();
-                /*Intent intent = new Intent(Menu.this, CreaPuzzle.class);
+
+                Intent intent = new Intent(Menu.this, SeleccionarPuzzle.class);
                 Bundle bundle2= new Bundle();
                 Bundle datos=getIntent().getExtras();
                 int op= datos.getInt("opcion");
                 bundle2.putInt("opcion",op);
                 intent.putExtras(bundle2);
-                startActivity(intent);*/
+                startActivity(intent);
                 break;
 
             case R.id.closeSesiontButton: //sale de la aplicacion
@@ -87,7 +87,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                 break;
         }
     }
-    public void downloadFirebase(){
+    /*public void downloadFirebase(){
         StorageReference imageRef = storageReference.child("images/puzzle4.jpg");
         long MAXBYTES = 1024*1024;
         imageRef.getBytes(MAXBYTES).addOnSuccessListener(new OnSuccessListener<byte[]>() {
@@ -113,6 +113,6 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         });
 
 
-    }
+    }*/
 
 }
