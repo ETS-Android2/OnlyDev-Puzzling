@@ -8,9 +8,6 @@ import android.widget.Button;
 
 public class Menu extends AppCompatActivity implements View.OnClickListener{
 
-
-
-
     @Override
     public void onResume() {
         super.onResume();
@@ -31,8 +28,6 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);

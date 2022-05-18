@@ -58,9 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sesion_main);
         //iniciar();
@@ -194,7 +191,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i= new Intent(this,MusicManager.class);
         bundle.putInt("opcion",1);
         startService(i);
-
     }
 
 
