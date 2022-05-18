@@ -4,7 +4,7 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import static java.lang.StrictMath.abs;
 
-import android.content.Intent;
+import android.animation.ObjectAnimator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +45,9 @@ public class AcopladorPieza implements View.OnTouchListener {
                 xDelta = x - lParams.leftMargin;
                 yDelta = y - lParams.topMargin;
                 pieza.bringToFront();
+                //Se llama al movimiento de la pieza.
+                animPieceAlpha(pieza);
+                //playPickPieceSound();
                 break;
             case MotionEvent.ACTION_MOVE:
                 lParams.leftMargin = (int) (x - xDelta);
@@ -60,11 +63,28 @@ public class AcopladorPieza implements View.OnTouchListener {
                     pieza.setLayoutParams(lParams);
                     pieza.canMove = false;
                     enviarAtras(pieza);
+                    //Se llama al movimiento de la rotación de la pieza.
+                    animPieceRotate(pieza);
+                    //playSetPieceSound();
                     activity.checkGameOver(); //se chequea estado del juego
                 }
                 break;
         }
         return true;
+    }
+
+    //Se crea el método que hace que la pieza se mueva.
+    private void animPieceAlpha(Piezas piece) {
+        ObjectAnimator animation1 = ObjectAnimator.ofFloat(piece, "alpha", 0.5f, 1f);
+        animation1.setDuration(600);
+        animation1.start();
+    }
+
+    //Se crea el método que hace que la pieza rote en su posión.
+    private void animPieceRotate(Piezas piece) {
+        ObjectAnimator animation = ObjectAnimator.ofFloat(piece, "rotation", 5, -5, 5, -5, 5, -5, 0);
+        animation.setDuration(300);
+        animation.start();
     }
 
     public void enviarAtras(final View child) {
