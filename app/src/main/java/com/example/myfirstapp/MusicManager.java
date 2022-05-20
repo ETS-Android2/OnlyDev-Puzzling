@@ -9,13 +9,12 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 
 public class MusicManager extends Service {
-   MediaPlayer player;
+   MediaPlayer player,clinck;
    int op;
    Uri patchSound;
    String patchSoundString;
 
    public MusicManager(){
-
 
    }
 
@@ -35,6 +34,10 @@ public class MusicManager extends Service {
 
        super.onDestroy();
        player.stop();
+    }
+    public void playPieceSound() {
+        clinck = MediaPlayer.create(this,R.raw.clinck_sound);
+        clinck.start();
     }
 
     @Override
