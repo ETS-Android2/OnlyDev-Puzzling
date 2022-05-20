@@ -99,15 +99,10 @@ public class CreaPuzzle extends AppCompatActivity {
 
         Intent intent = getIntent();
        // final String assetName = intent.getStringExtra("assetName"); //obtiene la imagen seleccionada por el jugador
-        String assetName="";
+        String assetName="https://firebasestorage.googleapis.com/v0/b/onlydev-94888.appspot.com/o/images%2Fpuzzle4.jpg?alt=media&token=26fb6fb1-eb9e-4046-99bc-830d171aea1f";
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         StorageReference dateRef = storageRef.child("images/puzzle4.jpg");
-        dateRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
 
-            }
-        });
         //String assetName = "https://firebasestorage.googleapis.com/v0/b/onlydev-94888.appspot.com/o/images%2Fpuzzle3.jpg?alt=media&token=4d94e0f2-fa6f-4b80-81c7-f0078e253fb3";
         // ejecuta esto después de que la vista fue diseñada para tener todas las dimensiones calculadas
         imageView.post(new Runnable() {
@@ -152,6 +147,7 @@ public class CreaPuzzle extends AppCompatActivity {
         AssetManager am = getAssets();
         try {
             InputStream is = am.open("img/" + assetName);
+            //InputStream is = am.open(assetName);
             // obtiene las dimensiones del bitmap
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             bmOptions.inJustDecodeBounds = true;
