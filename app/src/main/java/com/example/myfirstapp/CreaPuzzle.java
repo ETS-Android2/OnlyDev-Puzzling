@@ -18,8 +18,10 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.provider.CalendarContract;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Random;
 
@@ -329,9 +332,23 @@ public class CreaPuzzle extends AppCompatActivity {
                 //createNewDialog();
                 Toast.makeText(CreaPuzzle.this, "Your new score is " +
                         score,Toast.LENGTH_SHORT).show();
+                Intent calendarIntent = new Intent(Intent.ACTION_INSERT)
+                        .setData(CalendarContract.Events.CONTENT_URI)
+                        .putExtra(CalendarContract.Events.TITLE, "Puzzling new score!")
+                        .putExtra(CalendarContract.Events.DESCRIPTION,
+                        "You've made a new score today! The score was " + score + " points.")
+                        .putExtra(CalendarContract.Events.EVENT_LOCATION,
+                                "Puzzling App by DevOnly")
+                        .putExtra(CalendarContract.Events.ALL_DAY, true);
+                try {
+                    startActivity(calendarIntent);
+                } catch (Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(CreaPuzzle.this,
+                            "There is no app supporting calendar event cretion.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
-            /*Toast.makeText(CreaPuzzle.this, "You've completed the puzzle",
-                    Toast.LENGTH_LONG).show();*/
             Intent i = new Intent(this, GreatMenu.class);
             startActivity(i);
         }
