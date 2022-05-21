@@ -3,6 +3,9 @@ package com.example.myfirstapp;
 import static java.lang.Math.abs;
 
 import android.animation.ObjectAnimator;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +22,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.CalendarContract;
@@ -28,6 +32,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -84,6 +90,13 @@ public class CreaPuzzle extends AppCompatActivity {
             startService(i);
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("Score Notification",
+                    "Score Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+        }
         Intent intent = getIntent();
         //Obtiene la imagen seleccionada por el jugador.
         final String assetName = intent.getStringExtra("assetName");
@@ -332,6 +345,17 @@ public class CreaPuzzle extends AppCompatActivity {
                 //createNewDialog();
                 Toast.makeText(CreaPuzzle.this, "Your new score is " +
                         score,Toast.LENGTH_SHORT).show();
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(CreaPuzzle.this,
+                        "Score Notification")
+                        .setContentTitle("Score notification")
+                        .setContentText("You've made a new score today! The score was " + score + " points.")
+                        .setSmallIcon(R.mipmap.ic_launcher);
+
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(CreaPuzzle.this);
+                managerCompat.notify(1, builder.build());
+
+                Calendar calendar = Calendar.getInstance();
                 Intent calendarIntent = new Intent(Intent.ACTION_INSERT)
                         .setData(CalendarContract.Events.CONTENT_URI)
                         .putExtra(CalendarContract.Events.TITLE, "Puzzling new score!")
@@ -339,7 +363,8 @@ public class CreaPuzzle extends AppCompatActivity {
                         "You've made a new score today! The score was " + score + " points.")
                         .putExtra(CalendarContract.Events.EVENT_LOCATION,
                                 "Puzzling App by DevOnly")
-                        .putExtra(CalendarContract.Events.ALL_DAY, true);
+                        .putExtra("beginTime", calendar.getTimeInMillis())
+                        .putExtra("endTime", calendar.getTimeInMillis()+60*60*1000);
                 try {
                     startActivity(calendarIntent);
                 } catch (Exception e){
@@ -348,9 +373,9 @@ public class CreaPuzzle extends AppCompatActivity {
                             "There is no app supporting calendar event cretion.",
                             Toast.LENGTH_LONG).show();
                 }
+
             }
-            Intent i = new Intent(this, GreatMenu.class);
-            startActivity(i);
+            finish();
         }
     }
 
